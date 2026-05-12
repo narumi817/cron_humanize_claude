@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Cron Humanize</h1>
+  <p class="subtitle">cron式を人間向けの言葉に変換します</p>
+
+  <%= form_with url: root_path, method: :get, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :cron_expression, "cron式" %>
+      <%= f.text_field :cron_expression,
+            value: @cron_expression,
+            placeholder: "例: 0 9 * * 1-5",
+            class: "form-input",
+            autofocus: true %>
+    </div>
+    <%= f.submit "変換する", class: "btn" %>
+  <% end %>
+
+  <% if @result %>
+    <% if @result.error %>
+      <div class="result error">
+        <p><%= @result.error %></p>
+      </div>
+    <% else %>
+      <div class="result">
+        <div class="description">
+          <h2><%= @cron_expression %></h2>
+          <p class="human-text"><%= @result.description %></p>
+        </div>
+
+        <% if @result.next_times.any? %>
+          <div class="next-times">
+            <h3>次回実行予定</h3>
+            <ul>
+              <% @result.next_times.each do |t| %>
+                <li><%= l(t, format: :long) %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
