@@ -1,28 +1,24 @@
-# cron_humanize_claude
+# README
 
-Claude AIを使ってcron式を人間が読みやすい形式に変換するツールです。
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## 概要
+Things you may want to cover:
 
-cron式（例: `0 9 * * 1-5`）を自然言語（例: 「平日の毎朝9時」）に翻訳します。
+* Ruby version
 
-## 使い方
+* System dependencies
 
-```
-cron_humanize_claude <cron式>
-```
+* Configuration
 
-## 例
+* Database creation
 
-```
-$ cron_humanize_claude "0 9 * * 1-5"
-平日の毎朝9時に実行
-```
+* Database initialization
 
-## 必要条件
+* How to run the test suite
 
-- `ANTHROPIC_API_KEY` 環境変数にAnthropicのAPIキーを設定
+* Services (job queues, cache servers, search engines, etc.)
 
-## ライセンス
+* Deployment instructions
 
-MIT
+* ...

@@ -1,0 +1,17 @@
+ARG RUBY_VERSION=3.2.11
+FROM ruby:$RUBY_VERSION-slim
+
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      build-essential \
+      libyaml-dev \
+      nodejs \
+    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+WORKDIR /rails
+
+ENV BUNDLE_PATH="/usr/local/bundle" \
+    RAILS_ENV="development"
+
+ENTRYPOINT ["bash", "bin/docker-entrypoint-dev"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
