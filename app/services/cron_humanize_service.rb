@@ -26,8 +26,9 @@ class CronHumanizeService
   def humanize
     minute, hour, day, month, weekday = @expression.split
 
-    return "毎分" if every_minute?(minute)
-    return "#{minute_interval(minute)}分ごと" if interval_minute?(minute)
+    all_wildcard = [hour, day, month, weekday].all? { |f| f == "*" }
+    return "毎分" if every_minute?(minute) && all_wildcard
+    return "#{minute_interval(minute)}分ごと" if interval_minute?(minute) && all_wildcard
 
     time_str = build_time_str(minute, hour)
     date_str = build_date_str(day, month, weekday)
@@ -45,6 +46,14 @@ class CronHumanizeService
 
   def minute_interval(minute)
     minute.sub("*/", "")
+  end
+
+  def step_field?(field)
+    field.start_with?("*/")
+  end
+
+  def step_value(field)
+    field.sub("*/", "")
   end
 
   def build_time_str(minute, hour)
