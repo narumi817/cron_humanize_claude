@@ -72,11 +72,14 @@ class CronHumanizeService
     end
   end
 
-  # "1,3-5" のようなカンマとレンジの混合パターンは非対応
   def humanize_weekday(weekday)
-    return weekday.split(",").map { |d| DAYS_JA[d.to_i] }.join("・") unless weekday.include?("-")
+    weekday.split(",").map { |token| humanize_weekday_token(token) }.join("・")
+  end
 
-    range = weekday.split("-")
+  def humanize_weekday_token(token)
+    return DAYS_JA[token.to_i] unless token.include?("-")
+
+    range = token.split("-")
     "#{DAYS_JA[range.first.to_i]}〜#{DAYS_JA[range.last.to_i]}"
   end
 

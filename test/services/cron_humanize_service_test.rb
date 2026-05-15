@@ -60,4 +60,10 @@ class CronHumanizeServiceTest < ActiveSupport::TestCase
     assert_nil result.error
     assert_equal "毎週水・金 12:00", result.description
   end
+
+  test "カンマとレンジが混在する曜日指定" do
+    result = CronHumanizeService.new("0 5 * * 1,3-5").call
+    assert_nil result.error
+    assert_equal "毎週月・水〜金 5:00", result.description
+  end
 end
