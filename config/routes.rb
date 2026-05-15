@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   root "cron_expressions#index"
-  get "cron_expressions", to: "cron_expressions#index"
 end

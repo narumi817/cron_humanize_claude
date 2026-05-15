@@ -1,6 +1,5 @@
 class CronHumanizeService
   DAYS_JA = %w[日 月 火 水 木 金 土].freeze
-  MONTHS_JA = %w[1 2 3 4 5 6 7 8 9 10 11 12].freeze
 
   Result = Data.define(:description, :next_times, :error)
 
@@ -13,7 +12,7 @@ class CronHumanizeService
     return Result.new(description: nil, next_times: [], error: "無効なcron式です") unless cron
 
     Result.new(
-      description: humanize(cron),
+      description: humanize,
       next_times: next_times(cron),
       error: nil
     )
@@ -23,7 +22,7 @@ class CronHumanizeService
 
   private
 
-  def humanize(cron)
+  def humanize
     minute, hour, day, month, weekday = parse_fields
 
     if every_minute?(minute)
