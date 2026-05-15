@@ -102,4 +102,52 @@ class CronHumanizeServiceTest < ActiveSupport::TestCase
     assert_nil result.error
     assert_equal "毎年1・3〜5月1日 9:00", result.description
   end
+
+  test "分カンマ指定" do
+    result = CronHumanizeService.new("0,30 9 * * *").call
+    assert_nil result.error
+    assert_equal "毎日 9時0・30分", result.description
+  end
+
+  test "分レンジ指定" do
+    result = CronHumanizeService.new("0-30 9 * * *").call
+    assert_nil result.error
+    assert_equal "毎日 9時0〜30分", result.description
+  end
+
+  test "時カンマ指定" do
+    result = CronHumanizeService.new("0 9,17 * * *").call
+    assert_nil result.error
+    assert_equal "毎日 9・17時0分", result.description
+  end
+
+  test "時レンジ指定" do
+    result = CronHumanizeService.new("0 9-17 * * *").call
+    assert_nil result.error
+    assert_equal "毎日 9〜17時0分", result.description
+  end
+
+  test "時と分の両方をカンマ指定" do
+    result = CronHumanizeService.new("0,30 9,17 * * *").call
+    assert_nil result.error
+    assert_equal "毎日 9・17時0・30分", result.description
+  end
+
+  test "毎時カンマ指定の分" do
+    result = CronHumanizeService.new("0,30 * * * *").call
+    assert_nil result.error
+    assert_equal "毎日 毎時0・30分", result.description
+  end
+
+  test "分のカンマとレンジ混合指定" do
+    result = CronHumanizeService.new("0,15-30 9 * * *").call
+    assert_nil result.error
+    assert_equal "毎日 9時0・15〜30分", result.description
+  end
+
+  test "時のカンマとレンジ混合指定" do
+    result = CronHumanizeService.new("0 9,12-17 * * *").call
+    assert_nil result.error
+    assert_equal "毎日 9・12〜17時0分", result.description
+  end
 end

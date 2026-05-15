@@ -48,14 +48,17 @@ class CronHumanizeService
   end
 
   def build_time_str(minute, hour)
-    h = hour == "*" ? nil : hour.to_i
-    m = minute == "*" ? 0 : minute.to_i
-
-    if h.nil?
-      "毎時#{m}分"
+    if hour == "*"
+      "毎時#{humanize_numeric_field(minute)}分"
+    elsif single_value?(hour) && single_value?(minute)
+      format("%d:%02d", hour.to_i, minute.to_i)
     else
-      format("%d:%02d", h, m)
+      "#{humanize_numeric_field(hour)}時#{humanize_numeric_field(minute)}分"
     end
+  end
+
+  def single_value?(field)
+    field.match?(/\A\d+\z/)
   end
 
   def build_date_str(day, month, weekday)
