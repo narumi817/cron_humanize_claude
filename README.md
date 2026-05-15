@@ -1,24 +1,48 @@
-# README
+# Cron Humanize
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+cron式を日本語に変換するWebアプリケーション。
 
-Things you may want to cover:
+## 機能
 
-* Ruby version
+- cron式を日本語の説明文に変換
+- 次回実行予定を5件表示
+- 無効なcron式のエラー表示
 
-* System dependencies
+**変換例**
 
-* Configuration
+| cron式 | 説明 |
+|---|---|
+| `* * * * *` | 毎分 |
+| `*/5 * * * *` | 5分ごと |
+| `0 9 * * *` | 毎日 9:00 |
+| `0 9 * * 1-5` | 毎週月〜金 9:00 |
+| `0 0 1 * *` | 毎月1日 0:00 |
 
-* Database creation
+## 技術スタック
 
-* Database initialization
+- Ruby 3.4.2
+- Rails 8.1
+- Docker / Docker Compose
 
-* How to run the test suite
+## 開発環境のセットアップ
 
-* Services (job queues, cache servers, search engines, etc.)
+Docker Desktop でファイル共有（`/Users/your_name/...`）を有効にしてから実行してください。
 
-* Deployment instructions
+```bash
+docker-compose build
+docker-compose up
+```
 
-* ...
+http://localhost:3000 でアクセスできます。
+
+## テスト
+
+```bash
+docker-compose run --rm web bundle exec rails test
+```
+
+## Rubocop
+
+```bash
+docker-compose run --rm web bundle exec rubocop
+```
