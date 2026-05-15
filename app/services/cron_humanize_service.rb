@@ -60,16 +60,27 @@ class CronHumanizeService
 
   def build_date_str(day, month, weekday)
     if month != "*"
-      month_str = "#{month}月"
-      day_str = day == "*" ? "" : "#{day}日"
+      month_str = "#{humanize_numeric_field(month)}月"
+      day_str = day == "*" ? "" : "#{humanize_numeric_field(day)}日"
       "毎年#{month_str}#{day_str}"
     elsif weekday != "*"
       "毎週#{humanize_weekday(weekday)}"
     elsif day != "*"
-      "毎月#{day}日"
+      "毎月#{humanize_numeric_field(day)}日"
     else
       "毎日"
     end
+  end
+
+  def humanize_numeric_field(field)
+    field.split(",").map { |token| humanize_numeric_token(token) }.join("・")
+  end
+
+  def humanize_numeric_token(token)
+    return token unless token.include?("-")
+
+    parts = token.split("-")
+    "#{parts.first}〜#{parts.last}"
   end
 
   def humanize_weekday(weekday)

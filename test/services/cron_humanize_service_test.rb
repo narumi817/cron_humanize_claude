@@ -66,4 +66,40 @@ class CronHumanizeServiceTest < ActiveSupport::TestCase
     assert_nil result.error
     assert_equal "毎週月・水〜金 5:00", result.description
   end
+
+  test "毎月複数日（カンマ）" do
+    result = CronHumanizeService.new("0 9 1,15 * *").call
+    assert_nil result.error
+    assert_equal "毎月1・15日 9:00", result.description
+  end
+
+  test "毎月日付レンジ" do
+    result = CronHumanizeService.new("0 9 1-5 * *").call
+    assert_nil result.error
+    assert_equal "毎月1〜5日 9:00", result.description
+  end
+
+  test "毎年複数月（カンマ）" do
+    result = CronHumanizeService.new("0 9 1 1,6 *").call
+    assert_nil result.error
+    assert_equal "毎年1・6月1日 9:00", result.description
+  end
+
+  test "毎年月レンジ" do
+    result = CronHumanizeService.new("0 9 1 1-3 *").call
+    assert_nil result.error
+    assert_equal "毎年1〜3月1日 9:00", result.description
+  end
+
+  test "毎月カンマとレンジが混在する日指定" do
+    result = CronHumanizeService.new("0 9 1,22-23 * *").call
+    assert_nil result.error
+    assert_equal "毎月1・22〜23日 9:00", result.description
+  end
+
+  test "毎年カンマとレンジが混在する月指定" do
+    result = CronHumanizeService.new("0 9 1 1,3-5 *").call
+    assert_nil result.error
+    assert_equal "毎年1・3〜5月1日 9:00", result.description
+  end
 end
