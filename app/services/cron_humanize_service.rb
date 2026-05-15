@@ -111,7 +111,7 @@ class CronHumanizeService
 
   def next_times(cron)
     times = []
-    t = Time.now
+    t = Time.current
     5.times do
       t = cron.next_time(t)
       times << t.to_t
