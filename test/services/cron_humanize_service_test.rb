@@ -150,4 +150,28 @@ class CronHumanizeServiceTest < ActiveSupport::TestCase
     assert_nil result.error
     assert_equal "毎日 9・12〜17時0分", result.description
   end
+
+  test "時フィールドのステップ値（分はワイルドカード）" do
+    result = CronHumanizeService.new("* */2 * * *").call
+    assert_nil result.error
+    assert_equal "毎日 2時間ごと", result.description
+  end
+
+  test "時フィールドのステップ値（特定の分）" do
+    result = CronHumanizeService.new("0 */2 * * *").call
+    assert_nil result.error
+    assert_equal "毎日 2時間ごとの0分", result.description
+  end
+
+  test "日フィールドのステップ値" do
+    result = CronHumanizeService.new("0 0 */5 * *").call
+    assert_nil result.error
+    assert_equal "5日ごと 0:00", result.description
+  end
+
+  test "月フィールドのステップ値" do
+    result = CronHumanizeService.new("0 0 1 */3 *").call
+    assert_nil result.error
+    assert_equal "3ヶ月ごと1日 0:00", result.description
+  end
 end

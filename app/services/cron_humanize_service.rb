@@ -26,7 +26,7 @@ class CronHumanizeService
   def humanize
     minute, hour, day, month, weekday = @expression.split
 
-    all_wildcard = [hour, day, month, weekday].all? { |f| f == "*" }
+    all_wildcard = [ hour, day, month, weekday ].all? { |f| f == "*" }
     return "毎分" if every_minute?(minute) && all_wildcard
     return "#{minute_interval(minute)}分ごと" if interval_minute?(minute) && all_wildcard
 
