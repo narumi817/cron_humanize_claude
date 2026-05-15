@@ -49,6 +49,12 @@ class CronHumanizeServiceTest < ActiveSupport::TestCase
     assert_equal "無効なcron式です", result.error
   end
 
+  test "マルチバイト文字" do
+    result = CronHumanizeService.new("あ").call
+    assert_equal "無効なcron式です", result.error
+    assert_nil result.description
+  end
+
   test "毎週水曜と金曜" do
     result = CronHumanizeService.new("0 12 * * 3,5").call
     assert_nil result.error
