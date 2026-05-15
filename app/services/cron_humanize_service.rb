@@ -77,12 +77,17 @@ class CronHumanizeService
   end
 
   def build_date_str(day, month, weekday)
-    if month != "*"
+    if step_field?(month)
+      day_str = day == "*" ? "" : "#{humanize_numeric_field(day)}日"
+      "#{step_value(month)}ヶ月ごと#{day_str}"
+    elsif month != "*"
       month_str = "#{humanize_numeric_field(month)}月"
       day_str = day == "*" ? "" : "#{humanize_numeric_field(day)}日"
       "毎年#{month_str}#{day_str}"
     elsif weekday != "*"
       "毎週#{humanize_weekday(weekday)}"
+    elsif step_field?(day)
+      "#{step_value(day)}日ごと"
     elsif day != "*"
       "毎月#{humanize_numeric_field(day)}日"
     else
