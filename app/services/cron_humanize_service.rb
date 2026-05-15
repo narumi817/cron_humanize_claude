@@ -16,29 +16,23 @@ class CronHumanizeService
       next_times: next_times(cron),
       error: nil
     )
-  rescue StandardError
+  rescue StandardError => e
+    Rails.logger.error("CronHumanizeService error: #{e.message}")
     Result.new(description: nil, next_times: [], error: "無効なcron式です")
   end
 
   private
 
   def humanize
-    minute, hour, day, month, weekday = parse_fields
+    minute, hour, day, month, weekday = @expression.split
 
-    if every_minute?(minute)
-      return "毎分"
-    elsif interval_minute?(minute)
-      return "#{minute_interval(minute)}分ごと"
-    end
+    return "毎分" if every_minute?(minute)
+    return "#{minute_interval(minute)}分ごと" if interval_minute?(minute)
 
     time_str = build_time_str(minute, hour)
     date_str = build_date_str(day, month, weekday)
 
     "#{date_str} #{time_str}".strip
-  end
-
-  def parse_fields
-    @expression.split
   end
 
   def every_minute?(minute)
