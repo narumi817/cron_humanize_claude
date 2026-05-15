@@ -53,3 +53,21 @@ cron式を人間向けに変換するMVPを作る
 - 30分ごとに区切りよく止められる構成を優先する
 - 1コミットにつき1つの論理的変更にする
 - 一度にすべてを実装しない
+
+# 検証ルール
+
+コードを変更した後は、毎回以下を実行してください:
+
+1. rubocop を実行する
+2. rails test を実行する
+3. エラーや失敗がある場合は、次に進む前に修正する
+
+Docker環境では以下のコマンドを使用してください:
+
+- docker-compose run --rm web bundle exec rubocop
+- docker-compose run --rm web bundle exec rails test
+
+以下の条件を満たしていない限り、実装完了とは判断しないでください:
+
+- rubocop が成功していること
+- test が成功していること
