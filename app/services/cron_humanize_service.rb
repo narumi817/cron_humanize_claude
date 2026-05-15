@@ -28,7 +28,7 @@ class CronHumanizeService
 
     all_wildcard = [ hour, day, month, weekday ].all? { |f| f == "*" }
     return "毎分" if every_minute?(minute) && all_wildcard
-    return "#{minute_interval(minute)}分ごと" if interval_minute?(minute) && all_wildcard
+    return "#{step_value(minute)}分ごと" if step_field?(minute) && all_wildcard
 
     time_str = build_time_str(minute, hour)
     date_str = build_date_str(day, month, weekday)
@@ -38,14 +38,6 @@ class CronHumanizeService
 
   def every_minute?(minute)
     minute == "*"
-  end
-
-  def interval_minute?(minute)
-    minute.start_with?("*/")
-  end
-
-  def minute_interval(minute)
-    minute.sub("*/", "")
   end
 
   def step_field?(field)
