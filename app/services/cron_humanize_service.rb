@@ -78,6 +78,7 @@ class CronHumanizeService
     end
   end
 
+  # "1,3-5" のようなカンマとレンジの混合パターンは非対応
   def humanize_weekday(weekday)
     return weekday.split(",").map { |d| DAYS_JA[d.to_i] }.join("・") unless weekday.include?("-")
 
@@ -91,7 +92,7 @@ class CronHumanizeService
     5.times do
       t = cron.next_time(t)
       times << t.to_t
-      t += 1
+      t += 1.second
     end
     times
   end
