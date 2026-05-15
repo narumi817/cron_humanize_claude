@@ -57,7 +57,13 @@ class CronHumanizeService
   end
 
   def build_time_str(minute, hour)
-    if hour == "*"
+    if step_field?(hour)
+      if every_minute?(minute)
+        "#{step_value(hour)}時間ごと"
+      else
+        "#{step_value(hour)}時間ごとの#{humanize_numeric_field(minute)}分"
+      end
+    elsif hour == "*"
       "毎時#{humanize_numeric_field(minute)}分"
     elsif single_value?(hour) && single_value?(minute)
       format("%d:%02d", hour.to_i, minute.to_i)
