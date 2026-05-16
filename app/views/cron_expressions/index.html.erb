@@ -1,3 +1,5 @@
+<% content_for :title, "Cron Humanize - cron式を日本語に変換" %>
+
 <div class="container">
   <h1>Cron Humanize</h1>
   <p class="subtitle">cron式を人間向けの言葉に変換します</p>
@@ -46,7 +48,7 @@
 
         <% if @result.next_times.any? %>
           <div class="next-times">
-            <h3>次回実行予定</h3>
+            <h3>今後5回のスケジュール</h3>
             <ul>
               <% @result.next_times.each do |t| %>
                 <li><%= l(t, format: :long) %></li>
