@@ -61,6 +61,28 @@ h1 {
   border-color: #4a90d9;
 }
 
+.format-hint {
+  margin-top: 0.4rem;
+}
+
+.format-labels {
+  display: flex;
+  padding: 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #aaa;
+}
+
+.format-labels span {
+  flex: 1;
+}
+
+.format-note {
+  margin-top: 0.2rem;
+  font-size: 0.75rem;
+  color: #bbb;
+}
+
 .btn {
   padding: 0.75rem 1.5rem;
   background: #4a90d9;

@@ -10,6 +10,12 @@
             placeholder: "例: 0 9 * * 1-5",
             class: "form-input",
             autofocus: true %>
+      <div class="format-hint">
+        <div class="format-labels">
+          <span>分</span><span>時</span><span>日</span><span>月</span><span>曜日</span>
+        </div>
+        <p class="format-note">半角スペース区切り &nbsp;•&nbsp; * はすべてを意味します &nbsp;•&nbsp; 曜日は 0=日〜6=土</p>
+      </div>
     </div>
     <%= f.submit "変換する", class: "btn" %>
   <% end %>
