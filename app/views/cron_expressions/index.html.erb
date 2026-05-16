@@ -20,6 +20,17 @@
     <%= f.submit "変換する", class: "btn" %>
   <% end %>
 
+  <div class="samples">
+    <p class="samples-label">よく使う例</p>
+    <div class="sample-links">
+      <%= link_to "毎日9時", root_path(cron_expression: "0 9 * * *"), class: "sample-btn" %>
+      <%= link_to "5分ごと", root_path(cron_expression: "*/5 * * * *"), class: "sample-btn" %>
+      <%= link_to "毎時0分", root_path(cron_expression: "0 * * * *"), class: "sample-btn" %>
+      <%= link_to "毎週月〜金 9時", root_path(cron_expression: "0 9 * * 1-5"), class: "sample-btn" %>
+      <%= link_to "毎月1日 0時", root_path(cron_expression: "0 0 1 * *"), class: "sample-btn" %>
+    </div>
+  </div>
+
   <% if @result %>
     <% if @result.error %>
       <div class="result error">

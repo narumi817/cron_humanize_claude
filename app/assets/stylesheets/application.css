@@ -97,6 +97,37 @@ h1 {
   background: #357abd;
 }
 
+.samples {
+  margin-top: 1.5rem;
+}
+
+.samples-label {
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+
+.sample-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sample-btn {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  color: #4a90d9;
+  border: 1px solid #4a90d9;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.sample-btn:hover {
+  background: #4a90d9;
+  color: white;
+}
+
 .result {
   margin-top: 2rem;
   background: white;
