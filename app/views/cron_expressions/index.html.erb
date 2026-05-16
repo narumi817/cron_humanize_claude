@@ -23,7 +23,8 @@
   <% if @result %>
     <% if @result.error %>
       <div class="result error">
-        <p><%= @result.error %></p>
+        <p class="error-message">cron式の形式が正しくありません</p>
+        <p class="error-hint">書式: 分 時 日 月 曜日（半角スペース区切り）<br>例: <code>0 9 * * *</code>（毎日9時）、<code>*/5 * * * *</code>（5分ごと）</p>
       </div>
     <% else %>
       <div class="result">

@@ -110,6 +110,24 @@ h1 {
   color: #e74c3c;
 }
 
+.error-message {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.error-hint {
+  font-size: 0.9rem;
+  color: #c0392b;
+  line-height: 1.6;
+}
+
+.error-hint code {
+  font-family: monospace;
+  background: #fdecea;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+}
+
 .description h2 {
   font-family: monospace;
   font-size: 1.25rem;
