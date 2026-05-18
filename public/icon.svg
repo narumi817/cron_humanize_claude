@@ -1,3 +1,22 @@
 <svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="256" cy="256" r="256" fill="red"/>
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="256" fill="#1a1a2e"/>
+
+  <!-- Clock face (outer ring) -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#4a90d9" stroke-width="24"/>
+
+  <!-- Clock center dot -->
+  <circle cx="256" cy="256" r="16" fill="#4a90d9"/>
+
+  <!-- Hour hand (pointing to ~9 o'clock / 270deg) -->
+  <line x1="256" y1="256" x2="256" y2="140" stroke="white" stroke-width="20" stroke-linecap="round"/>
+
+  <!-- Minute hand (pointing to ~12 o'clock but slightly right) -->
+  <line x1="256" y1="256" x2="340" y2="200" stroke="#4a90d9" stroke-width="14" stroke-linecap="round"/>
+
+  <!-- Tick marks at 12, 3, 6, 9 -->
+  <line x1="256" y1="88" x2="256" y2="116" stroke="#4a90d9" stroke-width="14" stroke-linecap="round"/>
+  <line x1="424" y1="256" x2="396" y2="256" stroke="#4a90d9" stroke-width="14" stroke-linecap="round"/>
+  <line x1="256" y1="424" x2="256" y2="396" stroke="#4a90d9" stroke-width="14" stroke-linecap="round"/>
+  <line x1="88" y1="256" x2="116" y2="256" stroke="#4a90d9" stroke-width="14" stroke-linecap="round"/>
 </svg>
