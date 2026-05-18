@@ -114,7 +114,7 @@ class CronHumanizeService
     t = Time.current
     5.times do
       t = cron.next_time(t)
-      times << t.to_t
+      times << t.to_t.in_time_zone
       t += 1.second
     end
     times
