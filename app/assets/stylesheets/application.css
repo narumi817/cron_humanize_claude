@@ -157,6 +157,7 @@ h1 {
   background: #fdecea;
   padding: 0.1rem 0.3rem;
   border-radius: 3px;
+  white-space: nowrap;
 }
 
 .description h2 {
