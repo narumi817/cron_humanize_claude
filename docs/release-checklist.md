@@ -7,7 +7,7 @@
 - [x] favicon 差し替え（デフォルト赤丸 → 時計アイコン）
 - [x] `lang="ja"` / `meta description` / `application-name` 修正
 - [x] `config.force_ssl = true` 有効化
-- [ ] `render.yaml` 作成
+- [x] `render.yaml` 作成
 
 ### should
 
@@ -21,7 +21,7 @@
 
 ### コード
 
-- [ ] `render.yaml` 作成
+- [x] `render.yaml` 作成
 
 ### Render ダッシュボード
 
