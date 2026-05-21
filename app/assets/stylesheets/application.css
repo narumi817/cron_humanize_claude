@@ -201,3 +201,74 @@ h1 {
 .next-times li:last-child {
   border-bottom: none;
 }
+
+.footer {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+
+.footer-link {
+  font-size: 0.8rem;
+  color: #999;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #666;
+}
+
+.footer-sep {
+  margin: 0 0.75rem;
+  color: #ddd;
+  font-size: 0.8rem;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.page-content {
+  padding: 2rem 0;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: #4a90d9;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.page-content h1 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-content h2 {
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-content p {
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 0.75rem;
+}
+
+.page-content a {
+  color: #4a90d9;
+}
+
+.updated-at {
+  margin-top: 3rem;
+  font-size: 0.8rem;
+  color: #999;
+}

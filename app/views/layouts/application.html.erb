@@ -46,5 +46,10 @@
 
   <body>
     <%= yield %>
+    <footer class="footer">
+      <%= link_to "プライバシーポリシー", privacy_path, class: "footer-link" %>
+      <span class="footer-sep">|</span>
+      <span class="footer-copy">&copy; 2026 mizk.net</span>
+    </footer>
   </body>
 </html>
