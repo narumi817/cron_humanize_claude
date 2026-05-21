@@ -1,6 +1,6 @@
 ---
 name: github-actions-review
-description: Gitアクションの内容をMVP観点でレビューする。Gitアクションのレビューを依頼されたときに使用する。
+description: （開発中）Gitアクションの内容をMVP観点でレビューする。Gitアクションのレビューを依頼されたときに使用する。
 ---
 
 # GitHub ActionsレビューSkill

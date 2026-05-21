@@ -36,4 +36,4 @@
 
 ### 確認
 
-- [ ] OGP シェアカード確認（production URL で Twitter Card Validator 等）
+- [x] OGP シェアカード確認（production URL で Twitter Card Validator 等）

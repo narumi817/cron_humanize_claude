@@ -1,6 +1,6 @@
 ---
 name: release-readiness
-description: 公開前のレビューを依頼されたときに使用する。
+description: （公開前）公開前のレビューを依頼されたときに使用する。
 ---
 
 # MVP Release Readiness Skill

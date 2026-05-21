@@ -1,6 +1,6 @@
 ---
 name: docker-review
-description: DockerfileやDocker Composeの構成をMVP観点でレビューする。Dockerのレビューを依頼されたときに使用する。
+description: （開発中）DockerfileやDocker Composeの構成をMVP観点でレビューする。Dockerのレビューを依頼されたときに使用する。
 ---
 
 # DockerレビューSkill

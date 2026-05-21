@@ -1,6 +1,6 @@
 ---
 name: mvp-review
-description: 実装内容をMVP観点でレビューする。MVP構成のレビューを依頼されたときに使用する。
+description: （開発中）実装内容をMVP観点でレビューする。MVP構成のレビューを依頼されたときに使用する。
 ---
 
 # MVPレビューSkill

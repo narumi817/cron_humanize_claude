@@ -1,6 +1,6 @@
 ---
-name: ui-ux-review
-description: UI/UXのレビューを依頼されたときに使用する。
+name: first-time-user-review
+description: （公開前）初見ユーザとしてUI/UXのレビューを依頼されたときに使用する。
 ---
 
 # UI/UX Review Skill

@@ -1,6 +1,6 @@
 ---
 name: analytics-setup
-description: MVPアプリの公開後に最低限必要な計測・観測を整理を依頼されたときに使用する。
+description: （公開後）MVPアプリの公開後に最低限必要な計測・観測を整理を依頼されたときに使用する。
 ---
 
 # MVP Observability Skill

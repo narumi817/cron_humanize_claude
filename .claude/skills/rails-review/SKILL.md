@@ -1,6 +1,6 @@
 ---
 name: rails-review
-description: 実装内容をレビューする。Railsのレビューを依頼されたときに使用する。
+description: （開発中）実装内容をレビューする。Railsのレビューを依頼されたときに使用する。
 ---
 
 # RailsレビューSkill
