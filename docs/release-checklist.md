@@ -11,9 +11,9 @@
 
 ### should
 
-- [ ] `og:url` 追加
-- [ ] canonical タグ追加
-- [ ] `robots.txt` に内容追記
+- [x] `og:url` 追加
+- [x] canonical タグ追加
+- [x] `robots.txt` に内容追記
 
 ---
 
@@ -25,14 +25,14 @@
 
 ### Render ダッシュボード
 
-- [ ] GitHub リポジトリを連携してサービス作成
-- [ ] `RAILS_MASTER_KEY` を環境変数に設定（`config/master.key` の中身）
-- [ ] デプロイ確認（`/up` ヘルスチェック通過）
-- [ ] カスタムドメイン設定（`cron_humanize.mizk.net`）
+- [x] GitHub リポジトリを連携してサービス作成
+- [x] `RAILS_MASTER_KEY` を環境変数に設定（`config/master.key` の中身）
+- [x] デプロイ確認（`/up` ヘルスチェック通過）
+- [x] カスタムドメイン設定（`cron-humanize.mizk.net`）
 
 ### DNS
 
-- [ ] `cron_humanize.mizk.net` の CNAME レコードを Render のホスト名に向ける
+- [x] `cron-humanize.mizk.net` の CNAME レコードを Render のホスト名に向ける
 
 ### 確認
 
