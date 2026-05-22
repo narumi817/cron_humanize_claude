@@ -87,25 +87,6 @@ docker-compose run --rm web bundle exec brakeman
 
 ## 将来的な機能
 
-### 日本語 → cron 変換
-
-例:
-- 毎日9時
-- 平日の18時
-- 毎週月曜
-
-アイデア:
-- 自然言語入力
-- チェックボックスUI
-- select形式のcronビルダー
-
-面白い理由:
-- cron humanize の補完機能になる
-- 初心者にも使いやすい
-- SEOとの相性が良い
-
----
-
 ## マネタイズ
 
 ### Adsense
@@ -131,3 +112,25 @@ docker-compose run --rm web bundle exec brakeman
 理由:
 - 開発者向けツールと相性が良い
 - 広告より軽量でシンプル
+
+
+## Done
+
+### 日本語 → cron 変換　✅
+
+例:
+- 毎日9時
+- 平日の18時
+- 毎週月曜
+
+アイデア:
+- 自然言語入力
+- チェックボックスUI
+- select形式のcronビルダー
+
+面白い理由:
+- cron humanize の補完機能になる
+- 初心者にも使いやすい
+- SEOとの相性が良い
+
+completed at: 2026/05/22
