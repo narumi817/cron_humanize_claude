@@ -11,3 +11,5 @@ services:
         value: production
       - key: RAILS_MASTER_KEY
         sync: false
+      - key: GOOGLE_ANALYTICS_ID
+        sync: false
