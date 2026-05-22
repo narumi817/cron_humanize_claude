@@ -1,31 +1,76 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  time:
+    formats:
+      long: "%B %-d, %Y (%a) %H:%M"
+
+  layouts:
+    application:
+      privacy: "Privacy Policy"
+
+  cron_expressions:
+    index:
+      title: "Cron Humanize - Convert cron expressions to English"
+      subtitle: "Convert cron expressions to human-readable text"
+      label: "Cron expression"
+      placeholder: "e.g. 0 9 * * 1-5"
+      format_hint:
+        minute: "min"
+        hour: "hour"
+        day: "day"
+        month: "month"
+        weekday: "weekday"
+        note_delimiter: "space-separated"
+        note_wildcard: "* means every"
+        note_weekday: "weekday: 0–6 (Sun–Sat)"
+      submit: "Convert"
+      samples:
+        label: "Common examples (click to convert)"
+        daily_9am: "Daily at 9am"
+        every_5min: "Every 5 min"
+        every_hour: "Every hour"
+        weekday_9am: "Weekdays at 9am"
+        monthly_1st: "1st of month at midnight"
+      error:
+        invalid: "Invalid cron expression format"
+        hint_format: "Format: min hour day month weekday (space-separated)"
+        hint_example1: "daily at 9am"
+        hint_example2: "every 5 min"
+      next_times: "Next 5 scheduled times"
+
+  pages:
+    privacy:
+      title: "Privacy Policy - Cron Humanize"
+      back: "← Back to top"
+      heading: "Privacy Policy"
+      intro: "This page describes how \"Cron Humanize\" (the \"Service\") handles personal information."
+      analytics:
+        heading: "Analytics"
+        body: "This Service uses Google Analytics (GA4) to understand usage. Google Analytics uses cookies to collect access information but does not collect personally identifiable information."
+        optout_text: "To disable Google Analytics data collection, please use the %{link}."
+        optout_link: "Google Analytics Opt-out Add-on"
+      data:
+        heading: "Information Collected"
+        body: "Cron expressions entered by users are sent to the server for conversion, but the input is never stored or logged."
+      contact:
+        heading: "Contact"
+        body: "For inquiries about this Privacy Policy, please contact %{link} on X (formerly Twitter)."
+      updated_at: "Last updated: May 21, 2026"
+
+  cron_humanize:
+    every_minute: "Every minute"
+    every_n_minutes: "Every %{n} minutes"
+    every_n_hours: "Every %{n} hours"
+    every_n_hours_at_minute: "At minute %{m}, every %{n} hours"
+    every_hour_at_minute: "At minute %{m} past every hour"
+    every_day: "Every day"
+    every_week: "Every %{days}"
+    every_month_on_day: "Every month on day %{day}"
+    every_n_days: "Every %{n} days"
+    every_year_on: "Every year in month %{month} on day %{day}"
+    every_year_on_month_only: "Every year in month %{month}"
+    every_n_months_on_day: "Every %{n} months on day %{day}"
+    every_n_months: "Every %{n} months"
+    at_time: "%{hour}:%{minute}"
+    range_separator: "–"
+    list_separator: ", "
+    invalid: "Invalid cron expression"

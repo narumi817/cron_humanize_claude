@@ -11,3 +11,75 @@ ja:
       - 木
       - 金
       - 土
+
+  layouts:
+    application:
+      privacy: "プライバシーポリシー"
+
+  cron_expressions:
+    index:
+      title: "Cron Humanize - cron式を日本語に変換"
+      subtitle: "cron式を人間向けの言葉に変換します"
+      label: "cron式"
+      placeholder: "例: 0 9 * * 1-5"
+      format_hint:
+        minute: "分"
+        hour: "時"
+        day: "日"
+        month: "月"
+        weekday: "曜日"
+        note_delimiter: "半角スペース区切り"
+        note_wildcard: "* はすべてを意味します"
+        note_weekday: "曜日は 0〜6（日〜土）"
+      submit: "変換する"
+      samples:
+        label: "よく使う例（クリックで変換）"
+        daily_9am: "毎日9時"
+        every_5min: "5分ごと"
+        every_hour: "毎時0分"
+        weekday_9am: "毎週月〜金 9時"
+        monthly_1st: "毎月1日 0時"
+      error:
+        invalid: "cron式の形式が正しくありません"
+        hint_format: "書式: 分 時 日 月 曜日（半角スペース区切り）"
+        hint_example1: "毎日9時"
+        hint_example2: "5分ごと"
+      next_times: "今後5回のスケジュール"
+
+  pages:
+    privacy:
+      title: "プライバシーポリシー - Cron Humanize"
+      back: "← TOPに戻る"
+      heading: "プライバシーポリシー"
+      intro: "本サービス「Cron Humanize」（以下「当サービス」）における個人情報の取り扱いについて説明します。"
+      analytics:
+        heading: "アクセス解析について"
+        body: "当サービスでは、利用状況の把握を目的として Google アナリティクス（GA4）を使用しています。Google アナリティクスはCookieを使用してアクセス情報を収集しますが、個人を特定する情報は収集しません。"
+        optout_text: "Google アナリティクスのデータ収集を無効にするには、%{link}をご利用ください。"
+        optout_link: "Google アナリティクス オプトアウト アドオン"
+      data:
+        heading: "収集する情報"
+        body: "当サービスでは、ユーザーが入力したcron式をサーバーに送信して変換処理を行いますが、入力内容を保存・記録することはありません。"
+      contact:
+        heading: "お問い合わせ"
+        body: "プライバシーポリシーに関するお問い合わせは、X（旧Twitter）の %{link} までご連絡ください。"
+      updated_at: "最終更新日：2026年5月21日"
+
+  cron_humanize:
+    every_minute: "毎分"
+    every_n_minutes: "%{n}分ごと"
+    every_n_hours: "%{n}時間ごと"
+    every_n_hours_at_minute: "%{n}時間ごとの%{m}分"
+    every_hour_at_minute: "毎時%{m}分"
+    every_day: "毎日"
+    every_week: "毎週%{days}"
+    every_month_on_day: "毎月%{day}日"
+    every_n_days: "%{n}日ごと"
+    every_year_on: "毎年%{month}月%{day}日"
+    every_year_on_month_only: "毎年%{month}月"
+    every_n_months_on_day: "%{n}ヶ月ごと%{day}日"
+    every_n_months: "%{n}ヶ月ごと"
+    at_time: "%{hour}時%{minute}分"
+    range_separator: "〜"
+    list_separator: "・"
+    invalid: "無効なcron式です"
