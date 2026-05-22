@@ -1,6 +1,4 @@
 class CronHumanizeService
-  DAYS_JA = %w[日 月 火 水 木 金 土].freeze
-
   Result = Data.define(:description, :next_times, :error)
 
   def initialize(expression)
@@ -9,7 +7,7 @@ class CronHumanizeService
 
   def call
     cron = Fugit.parse_cron(@expression)
-    return Result.new(description: nil, next_times: [], error: "無効なcron式です") unless cron
+    return Result.new(description: nil, next_times: [], error: I18n.t("cron_humanize.invalid")) unless cron
 
     Result.new(
       description: humanize,
@@ -18,7 +16,7 @@ class CronHumanizeService
     )
   rescue StandardError => e
     Rails.logger.error("CronHumanizeService error: #{e.message}")
-    Result.new(description: nil, next_times: [], error: "無効なcron式です")
+    Result.new(description: nil, next_times: [], error: I18n.t("cron_humanize.invalid"))
   end
 
   private
@@ -27,8 +25,8 @@ class CronHumanizeService
     minute, hour, day, month, weekday = @expression.split
 
     all_wildcard = [ hour, day, month, weekday ].all? { |f| f == "*" }
-    return "毎分" if every_minute?(minute) && all_wildcard
-    return "#{step_value(minute)}分ごと" if step_field?(minute) && all_wildcard
+    return I18n.t("cron_humanize.every_minute") if every_minute?(minute) && all_wildcard
+    return I18n.t("cron_humanize.every_n_minutes", n: step_value(minute)) if step_field?(minute) && all_wildcard
 
     time_str = build_time_str(minute, hour)
     date_str = build_date_str(day, month, weekday)
@@ -51,16 +49,16 @@ class CronHumanizeService
   def build_time_str(minute, hour)
     if step_field?(hour)
       if every_minute?(minute)
-        "#{step_value(hour)}時間ごと"
+        I18n.t("cron_humanize.every_n_hours", n: step_value(hour))
       else
-        "#{step_value(hour)}時間ごとの#{humanize_numeric_field(minute)}分"
+        I18n.t("cron_humanize.every_n_hours_at_minute", n: step_value(hour), m: humanize_numeric_field(minute))
       end
     elsif hour == "*"
-      "毎時#{humanize_numeric_field(minute)}分"
+      I18n.t("cron_humanize.every_hour_at_minute", m: humanize_numeric_field(minute))
     elsif single_value?(hour) && single_value?(minute)
       format("%d:%02d", hour.to_i, minute.to_i)
     else
-      "#{humanize_numeric_field(hour)}時#{humanize_numeric_field(minute)}分"
+      I18n.t("cron_humanize.at_time", hour: humanize_numeric_field(hour), minute: humanize_numeric_field(minute))
     end
   end
 
@@ -70,43 +68,49 @@ class CronHumanizeService
 
   def build_date_str(day, month, weekday)
     if step_field?(month)
-      day_str = day == "*" ? "" : "#{humanize_numeric_field(day)}日"
-      "#{step_value(month)}ヶ月ごと#{day_str}"
+      if day == "*"
+        I18n.t("cron_humanize.every_n_months", n: step_value(month))
+      else
+        I18n.t("cron_humanize.every_n_months_on_day", n: step_value(month), day: humanize_numeric_field(day))
+      end
     elsif month != "*"
-      month_str = "#{humanize_numeric_field(month)}月"
-      day_str = day == "*" ? "" : "#{humanize_numeric_field(day)}日"
-      "毎年#{month_str}#{day_str}"
+      if day == "*"
+        I18n.t("cron_humanize.every_year_on_month_only", month: humanize_numeric_field(month))
+      else
+        I18n.t("cron_humanize.every_year_on", month: humanize_numeric_field(month), day: humanize_numeric_field(day))
+      end
     elsif weekday != "*"
-      "毎週#{humanize_weekday(weekday)}"
+      I18n.t("cron_humanize.every_week", days: humanize_weekday(weekday))
     elsif step_field?(day)
-      "#{step_value(day)}日ごと"
+      I18n.t("cron_humanize.every_n_days", n: step_value(day))
     elsif day != "*"
-      "毎月#{humanize_numeric_field(day)}日"
+      I18n.t("cron_humanize.every_month_on_day", day: humanize_numeric_field(day))
     else
-      "毎日"
+      I18n.t("cron_humanize.every_day")
     end
   end
 
   def humanize_numeric_field(field)
-    field.split(",").map { |token| humanize_numeric_token(token) }.join("・")
+    field.split(",").map { |token| humanize_numeric_token(token) }.join(I18n.t("cron_humanize.list_separator"))
   end
 
   def humanize_numeric_token(token)
     return token unless token.include?("-")
 
     parts = token.split("-")
-    "#{parts.first}〜#{parts.last}"
+    "#{parts.first}#{I18n.t('cron_humanize.range_separator')}#{parts.last}"
   end
 
   def humanize_weekday(weekday)
-    weekday.split(",").map { |token| humanize_weekday_token(token) }.join("・")
+    weekday.split(",").map { |token| humanize_weekday_token(token) }.join(I18n.t("cron_humanize.list_separator"))
   end
 
   def humanize_weekday_token(token)
-    return DAYS_JA[token.to_i] unless token.include?("-")
+    days = I18n.t("date.abbr_day_names")
+    return days[token.to_i] unless token.include?("-")
 
     range = token.split("-")
-    "#{DAYS_JA[range.first.to_i]}〜#{DAYS_JA[range.last.to_i]}"
+    "#{days[range.first.to_i]}#{I18n.t('cron_humanize.range_separator')}#{days[range.last.to_i]}"
   end
 
   def next_times(cron)
