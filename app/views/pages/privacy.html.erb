@@ -1,22 +1,31 @@
-<% content_for :title, "プライバシーポリシー - Cron Humanize" %>
+<% content_for :title, t("pages.privacy.title") %>
 
 <div class="container">
   <div class="page-content">
-    <%= link_to "← TOPに戻る", root_path, class: "back-link" %>
-    <h1>プライバシーポリシー</h1>
+    <%= link_to t("pages.privacy.back"), locale_path(:root), class: "back-link" %>
+    <h1><%= t("pages.privacy.heading") %></h1>
 
-    <p>本サービス「Cron Humanize」（以下「当サービス」）における個人情報の取り扱いについて説明します。</p>
+    <p><%= t("pages.privacy.intro") %></p>
 
-    <h2>アクセス解析について</h2>
-    <p>当サービスでは、利用状況の把握を目的として Google アナリティクス（GA4）を使用しています。Google アナリティクスはCookieを使用してアクセス情報を収集しますが、個人を特定する情報は収集しません。</p>
-    <p>Google アナリティクスのデータ収集を無効にするには、<a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google アナリティクス オプトアウト アドオン</a>をご利用ください。</p>
+    <h2><%= t("pages.privacy.analytics.heading") %></h2>
+    <p><%= t("pages.privacy.analytics.body") %></p>
+    <p>
+      <%= t("pages.privacy.analytics.optout_text",
+            link: link_to(t("pages.privacy.analytics.optout_link"),
+                          "https://tools.google.com/dlpage/gaoptout",
+                          target: "_blank", rel: "noopener noreferrer")).html_safe %>
+    </p>
 
-    <h2>収集する情報</h2>
-    <p>当サービスでは、ユーザーが入力したcron式をサーバーに送信して変換処理を行いますが、入力内容を保存・記録することはありません。</p>
+    <h2><%= t("pages.privacy.data.heading") %></h2>
+    <p><%= t("pages.privacy.data.body") %></p>
 
-    <h2>お問い合わせ</h2>
-    <p>プライバシーポリシーに関するお問い合わせは、X（旧Twitter）の <a href="https://x.com/mizk1116" target="_blank" rel="noopener noreferrer">@mizk1116</a> までご連絡ください。</p>
+    <h2><%= t("pages.privacy.contact.heading") %></h2>
+    <p>
+      <%= t("pages.privacy.contact.body",
+            link: link_to("@mizk1116", "https://x.com/mizk1116",
+                          target: "_blank", rel: "noopener noreferrer")).html_safe %>
+    </p>
 
-    <p class="updated-at">最終更新日：2026年5月21日</p>
+    <p class="updated-at"><%= t("pages.privacy.updated_at") %></p>
   </div>
 </div>

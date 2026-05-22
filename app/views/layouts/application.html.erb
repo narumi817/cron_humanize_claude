@@ -47,7 +47,7 @@
   <body>
     <%= yield %>
     <footer class="footer">
-      <%= link_to "プライバシーポリシー", privacy_path, class: "footer-link" %>
+      <%= link_to t("layouts.application.privacy"), locale_path(:privacy), class: "footer-link" %>
       <span class="footer-sep">|</span>
       <span class="footer-copy">&copy; 2026 mizk.net</span>
     </footer>

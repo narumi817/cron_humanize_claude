@@ -1,47 +1,60 @@
-<% content_for :title, "Cron Humanize - cron式を日本語に変換" %>
+<% content_for :title, t("cron_expressions.index.title") %>
 
 <div class="container">
   <h1>Cron Humanize</h1>
-  <p class="subtitle">cron式を人間向けの言葉に変換します</p>
+  <p class="subtitle"><%= t("cron_expressions.index.subtitle") %></p>
 
-  <%= form_with url: root_path, method: :get do |f| %>
+  <%= form_with url: locale_path(:root), method: :get do |f| %>
     <div class="form-group">
-      <%= f.label :cron_expression, "cron式" %>
+      <%= f.label :cron_expression, t("cron_expressions.index.label") %>
       <%= f.text_field :cron_expression,
             value: @cron_expression,
-            placeholder: "例: 0 9 * * 1-5",
+            placeholder: t("cron_expressions.index.placeholder"),
             class: "form-input",
             autofocus: true,
             required: true %>
       <div class="format-hint">
         <div class="format-labels">
-          <span>分</span><span>時</span><span>日</span><span>月</span><span>曜日</span>
+          <span><%= t("cron_expressions.index.format_hint.minute") %></span>
+          <span><%= t("cron_expressions.index.format_hint.hour") %></span>
+          <span><%= t("cron_expressions.index.format_hint.day") %></span>
+          <span><%= t("cron_expressions.index.format_hint.month") %></span>
+          <span><%= t("cron_expressions.index.format_hint.weekday") %></span>
         </div>
-        <p class="format-note">• 半角スペース区切り<br>• * はすべてを意味します<br>• 曜日は 0〜6（日〜土）</p>
+        <p class="format-note">
+          • <%= t("cron_expressions.index.format_hint.note_delimiter") %><br>
+          • <%= t("cron_expressions.index.format_hint.note_wildcard") %><br>
+          • <%= t("cron_expressions.index.format_hint.note_weekday") %>
+        </p>
       </div>
     </div>
-    <%= f.submit "変換する", class: "btn" %>
+    <%= f.submit t("cron_expressions.index.submit"), class: "btn" %>
   <% end %>
 
   <div class="samples">
-    <p class="samples-label">よく使う例（クリックで変換）</p>
+    <p class="samples-label"><%= t("cron_expressions.index.samples.label") %></p>
     <div class="sample-links">
-      <%= link_to "毎日9時", root_path(cron_expression: "0 9 * * *"), class: "sample-btn" %>
-      <%= link_to "5分ごと", root_path(cron_expression: "*/5 * * * *"), class: "sample-btn" %>
-      <%= link_to "毎時0分", root_path(cron_expression: "0 * * * *"), class: "sample-btn" %>
-      <%= link_to "毎週月〜金 9時", root_path(cron_expression: "0 9 * * 1-5"), class: "sample-btn" %>
-      <%= link_to "毎月1日 0時", root_path(cron_expression: "0 0 1 * *"), class: "sample-btn" %>
+      <%= link_to t("cron_expressions.index.samples.daily_9am"),
+            locale_path(:root, cron_expression: "0 9 * * *"), class: "sample-btn" %>
+      <%= link_to t("cron_expressions.index.samples.every_5min"),
+            locale_path(:root, cron_expression: "*/5 * * * *"), class: "sample-btn" %>
+      <%= link_to t("cron_expressions.index.samples.every_hour"),
+            locale_path(:root, cron_expression: "0 * * * *"), class: "sample-btn" %>
+      <%= link_to t("cron_expressions.index.samples.weekday_9am"),
+            locale_path(:root, cron_expression: "0 9 * * 1-5"), class: "sample-btn" %>
+      <%= link_to t("cron_expressions.index.samples.monthly_1st"),
+            locale_path(:root, cron_expression: "0 0 1 * *"), class: "sample-btn" %>
     </div>
   </div>
 
   <% if @result %>
     <% if @result.error %>
       <div class="result error">
-        <p class="error-message">cron式の形式が正しくありません</p>
+        <p class="error-message"><%= t("cron_expressions.index.error.invalid") %></p>
         <p class="error-hint">
-          書式: 分 時 日 月 曜日（半角スペース区切り）<br>
-          例: <code>0 9 * * *</code>（毎日9時）<br>
-          　　<code>*/5 * * * *</code>（5分ごと）
+          <%= t("cron_expressions.index.error.hint_format") %><br>
+          <%= t("cron_expressions.index.error.hint_example1") %>: <code>0 9 * * *</code><br>
+          <%= t("cron_expressions.index.error.hint_example2") %>: <code>*/5 * * * *</code>
         </p>
       </div>
     <% else %>
@@ -53,10 +66,10 @@
 
         <% if @result.next_times.any? %>
           <div class="next-times">
-            <h3>今後5回のスケジュール</h3>
+            <h3><%= t("cron_expressions.index.next_times") %></h3>
             <ul>
-              <% @result.next_times.each do |t| %>
-                <li><%= l(t, format: :long) %></li>
+              <% @result.next_times.each do |time| %>
+                <li><%= l(time, format: :long) %></li>
               <% end %>
             </ul>
           </div>
