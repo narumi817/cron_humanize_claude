@@ -209,6 +209,21 @@ h1 {
   border-top: 1px solid #e0e0e0;
 }
 
+.footer-bmc {
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.footer-bmc-link {
+  color: #666;
+  text-decoration: none;
+}
+
+.footer-bmc-link:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
 .footer-link {
   font-size: 0.8rem;
   color: #999;

@@ -49,6 +49,11 @@
   <body>
     <%= yield %>
     <footer class="footer">
+      <% if ENV['BMC_URL'].present? %>
+        <p class="footer-bmc">
+          <%= link_to t("layouts.application.bmc"), ENV['BMC_URL'], class: "footer-bmc-link", target: "_blank", rel: "noopener noreferrer" %>
+        </p>
+      <% end %>
       <%= link_to t("layouts.application.privacy"), locale_path(:privacy), class: "footer-link" %>
       <span class="footer-sep">|</span>
       <% if I18n.locale == :en %>
