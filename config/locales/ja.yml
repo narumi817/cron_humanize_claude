@@ -15,6 +15,7 @@ ja:
   layouts:
     application:
       privacy: "プライバシーポリシー"
+      bmc: "このツールが役に立ったら ☕️ Buy Me a Coffee で応援していただけると嬉しいです"
 
   cron_expressions:
     index:

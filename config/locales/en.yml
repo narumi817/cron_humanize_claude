@@ -6,6 +6,7 @@ en:
   layouts:
     application:
       privacy: "Privacy Policy"
+      bmc: "If this tool was helpful, feel free to ☕️ support me on Buy Me a Coffee"
 
   cron_expressions:
     index:
