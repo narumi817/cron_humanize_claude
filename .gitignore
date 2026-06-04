@@ -32,6 +32,9 @@
 /.vscode
 /.idea
 
+# Ignore Playwright MCP artifacts.
+/.playwright-mcp
+
 # Ignore Claude Code local settings.
 /.claude/settings.local.json
 
