@@ -1,4 +1,12 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/mizukoshi/personal/cron_humanize_claude checkout -b feature/cron-builder)",
+      "Bash(git -C /Users/mizukoshi/personal/cron_humanize_claude add config/routes.rb app/controllers/cron_builder_controller.rb app/views/cron_builder/index.html.erb)",
+      "Bash(git -C /Users/mizukoshi/personal/cron_humanize_claude commit -m ' *)",
+      "Bash(git -C /Users/mizukoshi/personal/cron_humanize_claude add app/controllers/cron_builder_controller.rb app/views/cron_builder/index.html.erb app/assets/stylesheets/application.css)"
+    ]
+  },
   "enableAllProjectMcpServers": true,
   "hooks": {
     "Notification": [
