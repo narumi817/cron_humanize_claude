@@ -1,5 +1,13 @@
 # cron ビルダー設計
 
+## TODO
+
+- [ ] `gh auth login` を実行して GitHub CLI を認証する
+- [ ] PR #9 の概要を記載する
+- [ ] PR #9 の最終レビューを行ってマージする
+
+---
+
 ## 進捗
 
 - [x] Step 1: ルーティング・Controller・空の View（骨格）
