@@ -4,6 +4,6 @@ class CronBuilderController < ApplicationController
     return unless params[:frequency].present?
 
     @cron_expression = CronBuilderService.new(params).call
-    @result = CronHumanizeService.new(@cron_expression).call if @cron_expression
+    @next_times = CronHumanizeService.new(@cron_expression).call.next_times if @cron_expression
   end
 end

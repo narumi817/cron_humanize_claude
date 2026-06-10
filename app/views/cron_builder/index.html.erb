@@ -137,11 +137,11 @@
         <h2><%= @cron_expression %></h2>
       </div>
 
-      <% if @result && @result.next_times.any? %>
+      <% if @next_times&.any? %>
         <div class="next-times">
           <h3>今後5回のスケジュール</h3>
           <ul>
-            <% @result.next_times.each do |time| %>
+            <% @next_times.each do |time| %>
               <li><%= l(time, format: :long) %></li>
             <% end %>
           </ul>

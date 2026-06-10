@@ -29,4 +29,18 @@ class CronBuilderControllerTest < ActionDispatch::IntegrationTest
     get build_path, params: { frequency: "every_week", hour: 9, minute: 0 }
     assert_select ".result", count: 0
   end
+
+  test "毎月でcron式を表示" do
+    get build_path, params: { frequency: "every_month", days: "1,15", hour: 9, minute: 0 }
+    assert_response :success
+    assert_select "h2", "0 9 1,15 * *"
+    assert_select ".next-times li", count: 5
+  end
+
+  test "毎年でcron式を表示" do
+    get build_path, params: { frequency: "every_year", months: "4", day: 1, hour: 9, minute: 0 }
+    assert_response :success
+    assert_select "h2", "0 9 1 4 *"
+    assert_select ".next-times li", count: 5
+  end
 end
