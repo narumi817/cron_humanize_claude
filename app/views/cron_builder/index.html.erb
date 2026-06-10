@@ -1,7 +1,8 @@
-<% content_for :title, "cron ビルダー - Cron Humanize" %>
+<% content_for :title, "Cron Builder - Cron Humanize" %>
 
 <div class="container">
-  <h1>cron ビルダー</h1>
+  <%= link_to "← Cron Humanize", root_path, class: "back-link" %>
+  <h1>Cron Builder</h1>
   <p class="subtitle">条件を選んで cron 式を生成します</p>
 
   <%= form_with url: build_path, method: :get, local: true do %>
