@@ -135,9 +135,6 @@
     <div class="result">
       <div class="description">
         <h2><%= @cron_expression %></h2>
-        <% if @result && !@result.error %>
-          <p class="human-text"><%= @result.description %></p>
-        <% end %>
       </div>
 
       <% if @result && @result.next_times.any? %>

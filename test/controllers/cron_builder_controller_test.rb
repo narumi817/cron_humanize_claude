@@ -15,7 +15,7 @@ class CronBuilderControllerTest < ActionDispatch::IntegrationTest
     get build_path, params: { frequency: "every_day", hour: 9, minute: 0 }
     assert_response :success
     assert_select "h2", "0 9 * * *"
-    assert_select ".human-text"
+    assert_select ".human-text", count: 0
     assert_select ".next-times li", count: 5
   end
 
