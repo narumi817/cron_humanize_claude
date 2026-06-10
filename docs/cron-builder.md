@@ -4,8 +4,8 @@
 
 - [x] Step 1: ルーティング・Controller・空の View（骨格）
 - [x] Step 2: 頻度のラジオボタン + 詳細設定フォームの View
-- [ ] Step 3: `CronBuilderService`（入力 → cron 式変換ロジック）
-- [ ] Step 4: 今後5回のスケジュール表示
+- [x] Step 3: `CronBuilderService`（入力 → cron 式変換ロジック）
+- [x] Step 4: 今後5回のスケジュール表示
 - [ ] Step 5: タイムゾーン対応・英語対応（i18n）
 - [ ] Step 6: UI/UXの調整
 

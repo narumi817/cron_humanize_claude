@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(git -C /Users/mizukoshi/personal/cron_humanize_claude add *)",
-      "Bash(git -C /Users/mizukoshi/personal/cron_humanize_claude commit -m ' *)"
+      "Bash(git -C /Users/mizukoshi/personal/cron_humanize_claude commit -m ' *)",
+      "Bash(git -C /Users/mizukoshi/personal/cron_humanize_claude branch --show-current)"
     ]
   },
   "enableAllProjectMcpServers": true,
