@@ -107,6 +107,21 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+.builder-hint {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.builder-hint-link {
+  color: #4a90d9;
+  text-decoration: none;
+}
+
+.builder-hint-link:hover {
+  text-decoration: underline;
+}
+
 .sample-links {
   display: flex;
   flex-wrap: wrap;

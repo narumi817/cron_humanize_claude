@@ -45,6 +45,10 @@
       <%= link_to t("cron_expressions.index.samples.monthly_1st"),
             locale_path(:root, cron_expression: "0 0 1 * *"), class: "sample-btn" %>
     </div>
+    <p class="builder-hint">
+      <%= t("cron_expressions.index.builder_hint") %>
+      <%= link_to t("cron_expressions.index.builder_link"), build_path, class: "builder-hint-link" %>
+    </p>
   </div>
 
   <% if @result %>
