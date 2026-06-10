@@ -130,6 +130,14 @@
       <%= submit_tag "生成する", class: "btn" %>
     </div>
   <% end %>
+
+  <% if @cron_expression %>
+    <div class="result">
+      <div class="description">
+        <h2><%= @cron_expression %></h2>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <script>
@@ -139,7 +147,9 @@
     function update() {
       var checked = document.querySelector('[name="frequency"]:checked');
       sections.forEach(function (s) {
-        s.hidden = !checked || s.dataset.frequency !== checked.value;
+        var active = checked && s.dataset.frequency === checked.value;
+        s.hidden = !active;
+        s.querySelectorAll('input').forEach(function (i) { i.disabled = !active; });
       });
     }
     radios.forEach(function (r) { r.addEventListener('change', update); });
