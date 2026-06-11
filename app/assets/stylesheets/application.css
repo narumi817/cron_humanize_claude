@@ -175,6 +175,14 @@ h1 {
   white-space: nowrap;
 }
 
+.result-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+  margin-bottom: 0.25rem;
+}
+
 .description h2 {
   font-family: monospace;
   font-size: 1.25rem;

@@ -1,7 +1,7 @@
 class CronBuilderController < ApplicationController
   MAJOR_TIMEZONES = [
     "Tokyo", "Seoul", "Hong Kong", "Beijing", "Singapore", "Bangkok",
-    "Mumbai", "Dubai", "Moscow", "Helsinki", "Berlin", "London", "UTC",
+    "Mumbai", "Abu Dhabi", "Moscow", "Helsinki", "Berlin", "London", "UTC",
     "Atlantic Time (Canada)", "Eastern Time (US & Canada)",
     "Central Time (US & Canada)", "Mountain Time (US & Canada)",
     "Pacific Time (US & Canada)", "Alaska", "Hawaii",

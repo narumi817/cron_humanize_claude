@@ -66,6 +66,7 @@ en:
     frequency_label: "Frequency"
     timezone_label: "Timezone"
     submit: "Generate"
+    result_label: "Generated cron expression"
     next_times: "Next 5 scheduled times"
     frequency:
       every_minute: "Every minute"

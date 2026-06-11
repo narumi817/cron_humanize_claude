@@ -75,6 +75,7 @@ ja:
     frequency_label: "頻度"
     timezone_label: "タイムゾーン"
     submit: "生成する"
+    result_label: "生成された cron 式"
     next_times: "今後5回のスケジュール"
     frequency:
       every_minute: "毎分"
