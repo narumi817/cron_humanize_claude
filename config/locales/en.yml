@@ -59,6 +59,37 @@ en:
         body: "For inquiries about this Privacy Policy, please contact %{link} on X (formerly Twitter)."
       updated_at: "Last updated: May 21, 2026"
 
+  cron_builder:
+    title: "Cron Builder - Cron Humanize"
+    subtitle: "Build a cron expression by selecting options"
+    back_link: "← Cron Humanize"
+    frequency_label: "Frequency"
+    timezone_label: "Timezone"
+    submit: "Generate"
+    next_times: "Next 5 scheduled times"
+    frequency:
+      every_minute: "Every minute"
+      every_n_minutes: "Every N minutes"
+      every_hour: "Every hour"
+      every_n_hours: "Every N hours"
+      every_day: "Every day"
+      every_week: "Every week"
+      every_month: "Every month"
+      every_year: "Every year"
+    unit:
+      minute_per: "min interval"
+      every_hour_prefix: "Every hour, at min"
+      minute: "min"
+      hour_interval: "h, at min"
+      every_day_prefix: "Daily at"
+      hour: "h"
+      weekday: "Weekday"
+      day_of_month: "Day"
+      month: "Month"
+    placeholder:
+      days: "e.g. 1,15"
+      months: "e.g. 4,10"
+
   cron_humanize:
     every_minute: "Every minute"
     every_n_minutes: "Every %{n} minutes"
