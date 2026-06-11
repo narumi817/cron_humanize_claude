@@ -74,6 +74,7 @@ ja:
     back_link: "← Cron Humanize"
     frequency_label: "頻度"
     timezone_label: "タイムゾーン"
+    schedule_settings: "スケジュール表示設定"
     submit: "生成する"
     result_label: "生成された cron 式"
     copy_button: "コピー"

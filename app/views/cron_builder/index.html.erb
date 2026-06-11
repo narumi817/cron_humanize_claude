@@ -119,16 +119,19 @@
     </div>
 
     <div class="form-group">
-      <label class="builder-label"><%= t("cron_builder.timezone_label") %></label>
-      <%= select_tag :timezone,
-            options_for_select(CronBuilderController::MAJOR_TIMEZONES.map { |tz|
-              [ActiveSupport::TimeZone[tz]&.to_s || tz, tz]
-            }, params[:timezone] || "Tokyo"),
-            class: "form-select" %>
+      <%= submit_tag t("cron_builder.submit"), class: "btn" %>
     </div>
 
-    <div class="form-group">
-      <%= submit_tag t("cron_builder.submit"), class: "btn" %>
+    <div class="builder-secondary">
+      <p class="builder-secondary-label"><%= t("cron_builder.schedule_settings") %></p>
+      <div class="form-group">
+        <label class="builder-label"><%= t("cron_builder.timezone_label") %></label>
+        <%= select_tag :timezone,
+              options_for_select(CronBuilderController::MAJOR_TIMEZONES.map { |tz|
+                [ActiveSupport::TimeZone[tz]&.to_s || tz, tz]
+              }, params[:timezone] || "Tokyo"),
+              class: "form-select" %>
+      </div>
     </div>
   <% end %>
 
@@ -172,7 +175,13 @@
         s.querySelectorAll('input').forEach(function (i) { i.disabled = !active; });
       });
     }
-    radios.forEach(function (r) { r.addEventListener('change', update); });
+    var result = document.querySelector('.result');
+    radios.forEach(function (r) {
+      r.addEventListener('change', function () {
+        update();
+        if (result) result.hidden = true;
+      });
+    });
     update();
 
     var copyBtn = document.querySelector('.copy-btn');

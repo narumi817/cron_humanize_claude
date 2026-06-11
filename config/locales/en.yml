@@ -65,6 +65,7 @@ en:
     back_link: "← Cron Humanize"
     frequency_label: "Frequency"
     timezone_label: "Timezone"
+    schedule_settings: "Schedule display settings"
     submit: "Generate"
     result_label: "Generated cron expression"
     copy_button: "Copy"
