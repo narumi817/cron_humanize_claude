@@ -136,7 +136,14 @@
     <div class="result">
       <div class="description">
         <p class="result-label"><%= t("cron_builder.result_label") %></p>
-        <h2><%= @cron_expression %></h2>
+        <div class="cron-output">
+          <h2 class="cron-expression"><%= @cron_expression %></h2>
+          <button type="button" class="copy-btn"
+                  data-copy="<%= @cron_expression %>"
+                  data-done="<%= t("cron_builder.copy_done") %>">
+            <%= t("cron_builder.copy_button") %>
+          </button>
+        </div>
       </div>
 
       <% if @next_times&.any? %>
@@ -167,5 +174,20 @@
     }
     radios.forEach(function (r) { r.addEventListener('change', update); });
     update();
+
+    var copyBtn = document.querySelector('.copy-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(copyBtn.dataset.copy).then(function () {
+          var original = copyBtn.textContent;
+          copyBtn.textContent = copyBtn.dataset.done;
+          copyBtn.disabled = true;
+          setTimeout(function () {
+            copyBtn.textContent = original;
+            copyBtn.disabled = false;
+          }, 2000);
+        });
+      });
+    }
   }());
 </script>
