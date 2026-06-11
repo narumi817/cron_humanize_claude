@@ -107,6 +107,21 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+.builder-hint {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.builder-hint-link {
+  color: #4a90d9;
+  text-decoration: none;
+}
+
+.builder-hint-link:hover {
+  text-decoration: underline;
+}
+
 .sample-links {
   display: flex;
   flex-wrap: wrap;
@@ -286,4 +301,109 @@ h1 {
   margin-top: 3rem;
   font-size: 0.8rem;
   color: #999;
+}
+
+.builder-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.frequency-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.frequency-option {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.frequency-option:has(input:checked) {
+  border-color: #4a90d9;
+  background: #eef4fc;
+  color: #4a90d9;
+  font-weight: 600;
+}
+
+.frequency-option input[type="radio"] {
+  display: none;
+}
+
+.builder-detail {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.builder-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.builder-field:last-child {
+  margin-bottom: 0;
+}
+
+.builder-label-inline {
+  font-weight: 600;
+  color: #555;
+  min-width: 2rem;
+}
+
+.builder-unit {
+  color: #555;
+}
+
+.form-input-inline {
+  width: 4rem;
+  padding: 0.4rem 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.form-input-inline:focus {
+  outline: none;
+  border-color: #4a90d9;
+}
+
+.weekday-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.weekday-option {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.weekday-option:has(input:checked) {
+  border-color: #4a90d9;
+  background: #eef4fc;
+  color: #4a90d9;
+  font-weight: 600;
+}
+
+.weekday-option input[type="checkbox"] {
+  display: none;
 }

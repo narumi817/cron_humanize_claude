@@ -1,0 +1,170 @@
+<% content_for :title, "Cron Builder - Cron Humanize" %>
+
+<div class="container">
+  <%= link_to "← Cron Humanize", root_path, class: "back-link" %>
+  <h1>Cron Builder</h1>
+  <p class="subtitle">条件を選んで cron 式を生成します</p>
+
+  <%= form_with url: build_path, method: :get, local: true do %>
+    <div class="form-group">
+      <label class="builder-label">頻度</label>
+      <div class="frequency-options">
+        <% {
+          "every_minute"   => "毎分",
+          "every_n_minutes" => "N分ごと",
+          "every_hour"     => "毎時",
+          "every_n_hours"  => "N時間ごと",
+          "every_day"      => "毎日",
+          "every_week"     => "毎週",
+          "every_month"    => "毎月",
+          "every_year"     => "毎年"
+        }.each do |value, label| %>
+          <label class="frequency-option">
+            <%= radio_button_tag :frequency, value, @frequency == value %>
+            <%= label %>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="builder-detail" data-frequency="every_n_minutes">
+      <div class="builder-field">
+        <%= number_field_tag :interval_minutes, params[:interval_minutes] || 15,
+              min: 1, max: 59, class: "form-input-inline" %>
+        <span class="builder-unit">分ごと</span>
+      </div>
+    </div>
+
+    <div class="builder-detail" data-frequency="every_hour">
+      <div class="builder-field">
+        <span class="builder-unit">毎時</span>
+        <%= number_field_tag :minute, params[:minute] || 0,
+              min: 0, max: 59, class: "form-input-inline" %>
+        <span class="builder-unit">分</span>
+      </div>
+    </div>
+
+    <div class="builder-detail" data-frequency="every_n_hours">
+      <div class="builder-field">
+        <%= number_field_tag :interval_hours, params[:interval_hours] || 6,
+              min: 1, max: 23, class: "form-input-inline" %>
+        <span class="builder-unit">時間ごとの</span>
+        <%= number_field_tag :minute, params[:minute] || 0,
+              min: 0, max: 59, class: "form-input-inline" %>
+        <span class="builder-unit">分</span>
+      </div>
+    </div>
+
+    <div class="builder-detail" data-frequency="every_day">
+      <div class="builder-field">
+        <span class="builder-unit">毎日</span>
+        <%= number_field_tag :hour, params[:hour] || 9,
+              min: 0, max: 23, class: "form-input-inline" %>
+        <span class="builder-unit">時</span>
+        <%= number_field_tag :minute, params[:minute] || 0,
+              min: 0, max: 59, class: "form-input-inline" %>
+        <span class="builder-unit">分</span>
+      </div>
+    </div>
+
+    <div class="builder-detail" data-frequency="every_week">
+      <div class="builder-field">
+        <span class="builder-label-inline">曜日</span>
+        <div class="weekday-checkboxes">
+          <% [["月", 1], ["火", 2], ["水", 3], ["木", 4], ["金", 5], ["土", 6], ["日", 0]].each do |name, value| %>
+            <label class="weekday-option">
+              <%= check_box_tag "weekdays[]", value,
+                    Array(params[:weekdays]).map(&:to_i).include?(value) %>
+              <%= name %>
+            </label>
+          <% end %>
+        </div>
+      </div>
+      <div class="builder-field">
+        <%= number_field_tag :hour, params[:hour] || 9,
+              min: 0, max: 23, class: "form-input-inline" %>
+        <span class="builder-unit">時</span>
+        <%= number_field_tag :minute, params[:minute] || 0,
+              min: 0, max: 59, class: "form-input-inline" %>
+        <span class="builder-unit">分</span>
+      </div>
+    </div>
+
+    <div class="builder-detail" data-frequency="every_month">
+      <div class="builder-field">
+        <span class="builder-label-inline">日</span>
+        <%= text_field_tag :days, params[:days],
+              class: "form-input-inline", placeholder: "例: 1,15" %>
+      </div>
+      <div class="builder-field">
+        <%= number_field_tag :hour, params[:hour] || 9,
+              min: 0, max: 23, class: "form-input-inline" %>
+        <span class="builder-unit">時</span>
+        <%= number_field_tag :minute, params[:minute] || 0,
+              min: 0, max: 59, class: "form-input-inline" %>
+        <span class="builder-unit">分</span>
+      </div>
+    </div>
+
+    <div class="builder-detail" data-frequency="every_year">
+      <div class="builder-field">
+        <span class="builder-label-inline">月</span>
+        <%= text_field_tag :months, params[:months],
+              class: "form-input-inline", placeholder: "例: 4,10" %>
+      </div>
+      <div class="builder-field">
+        <span class="builder-label-inline">日</span>
+        <%= number_field_tag :day, params[:day] || 1,
+              min: 1, max: 31, class: "form-input-inline" %>
+      </div>
+      <div class="builder-field">
+        <%= number_field_tag :hour, params[:hour] || 9,
+              min: 0, max: 23, class: "form-input-inline" %>
+        <span class="builder-unit">時</span>
+        <%= number_field_tag :minute, params[:minute] || 0,
+              min: 0, max: 59, class: "form-input-inline" %>
+        <span class="builder-unit">分</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= submit_tag "生成する", class: "btn" %>
+    </div>
+  <% end %>
+
+  <% if @cron_expression %>
+    <div class="result">
+      <div class="description">
+        <h2><%= @cron_expression %></h2>
+      </div>
+
+      <% if @next_times&.any? %>
+        <div class="next-times">
+          <h3>今後5回のスケジュール</h3>
+          <ul>
+            <% @next_times.each do |time| %>
+              <li><%= l(time, format: :long) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  (function () {
+    var radios = document.querySelectorAll('[name="frequency"]');
+    var sections = document.querySelectorAll('.builder-detail');
+    function update() {
+      var checked = document.querySelector('[name="frequency"]:checked');
+      sections.forEach(function (s) {
+        var active = checked && s.dataset.frequency === checked.value;
+        s.hidden = !active;
+        s.querySelectorAll('input').forEach(function (i) { i.disabled = !active; });
+      });
+    }
+    radios.forEach(function (r) { r.addEventListener('change', update); });
+    update();
+  }());
+</script>

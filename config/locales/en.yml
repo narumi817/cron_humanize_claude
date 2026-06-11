@@ -24,6 +24,8 @@ en:
         note_wildcard: "* means every"
         note_weekday: "weekday: 0–6 (Sun–Sat)"
       submit: "Convert"
+      builder_hint: "Not sure how to write a cron expression? Try the"
+      builder_link: "cron builder"
       samples:
         label: "Common examples (click to convert)"
         daily_9am: "Daily at 9am"

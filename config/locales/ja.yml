@@ -33,6 +33,8 @@ ja:
         note_wildcard: "* はすべてを意味します"
         note_weekday: "曜日は 0〜6（日〜土）"
       submit: "変換する"
+      builder_hint: "cron 式の書き方がわからない方は"
+      builder_link: "cron ビルダー"
       samples:
         label: "よく使う例（クリックで変換）"
         daily_9am: "毎日9時"
