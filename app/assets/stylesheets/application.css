@@ -407,3 +407,17 @@ h1 {
 .weekday-option input[type="checkbox"] {
   display: none;
 }
+
+.form-select {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #4a90d9;
+}
