@@ -21,8 +21,9 @@
     <meta name="twitter:title" content="<%= _page_title %>">
     <meta name="twitter:description" content="<%= _page_description %>">
     <meta name="twitter:image" content="<%= root_url.chomp('/') %>/ogp.png">
-    <link rel="alternate" hreflang="ja" href="<%= root_url %>">
-    <link rel="alternate" hreflang="en" href="<%= en_root_url %>">
+    <link rel="alternate" hreflang="ja" href="<%= locale_url_for(:ja) %>">
+    <link rel="alternate" hreflang="en" href="<%= locale_url_for(:en) %>">
+    <link rel="alternate" hreflang="x-default" href="<%= locale_url_for(:ja) %>">
 
     <%= yield :head %>
 
