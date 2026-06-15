@@ -1,0 +1,32 @@
+<% content_for :title, t("pages.terms.title") %>
+
+<div class="container">
+  <div class="page-content">
+    <%= link_to t("pages.terms.back"), locale_path(:root), class: "back-link" %>
+    <h1><%= t("pages.terms.heading") %></h1>
+
+    <p><%= t("pages.terms.intro") %></p>
+
+    <h2><%= t("pages.terms.overview.heading") %></h2>
+    <p><%= t("pages.terms.overview.body") %></p>
+
+    <h2><%= t("pages.terms.disclaimer.heading") %></h2>
+    <p><%= t("pages.terms.disclaimer.body") %></p>
+
+    <h2><%= t("pages.terms.prohibited.heading") %></h2>
+    <p><%= t("pages.terms.prohibited.intro") %></p>
+    <ul>
+      <% t("pages.terms.prohibited.items").each do |item| %>
+        <li><%= item %></li>
+      <% end %>
+    </ul>
+
+    <h2><%= t("pages.terms.suspension.heading") %></h2>
+    <p><%= t("pages.terms.suspension.body") %></p>
+
+    <h2><%= t("pages.terms.governing_law.heading") %></h2>
+    <p><%= t("pages.terms.governing_law.body") %></p>
+
+    <p class="updated-at"><%= t("pages.terms.updated_at") %></p>
+  </div>
+</div>

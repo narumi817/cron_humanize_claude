@@ -6,6 +6,7 @@ en:
   layouts:
     application:
       privacy: "Privacy Policy"
+      terms: "Terms of Service"
       bmc: "If this tool was helpful, feel free to ☕️ support me on Buy Me a Coffee"
 
   cron_expressions:
@@ -58,6 +59,31 @@ en:
         heading: "Contact"
         body: "For inquiries about this Privacy Policy, please contact %{link} on X (formerly Twitter)."
       updated_at: "Last updated: May 21, 2026"
+    terms:
+      title: "Terms of Service - Cron Humanize"
+      back: "← Back to top"
+      heading: "Terms of Service"
+      intro: "These Terms govern your use of \"Cron Humanize\" (the \"Service\"). Please read them before using the Service."
+      overview:
+        heading: "Service Overview"
+        body: "The Service is a free web tool that converts and builds cron expressions into human-readable formats, available for personal and professional use at no charge."
+      disclaimer:
+        heading: "Disclaimer"
+        body: "The Service is provided \"as is\" without any warranty. The operator shall not be liable for any damages arising from use of the Service, including errors in generated cron expressions causing system failures. Always verify generated expressions before using them in production."
+      prohibited:
+        heading: "Prohibited Activities"
+        intro: "The following activities are prohibited when using the Service."
+        items:
+          - "Placing excessive load on the Service"
+          - "Using the Service for illegal purposes"
+          - "Any other activity the operator deems inappropriate"
+      suspension:
+        heading: "Service Suspension"
+        body: "The operator may modify, suspend, or terminate the Service at any time without prior notice. The operator shall not be liable for any damages resulting from such actions."
+      governing_law:
+        heading: "Governing Law & Jurisdiction"
+        body: "These Terms are governed by the laws of Japan. Any disputes relating to the Service shall be subject to the exclusive jurisdiction of the Tokyo District Court as the court of first instance."
+      updated_at: "Last updated: June 15, 2026"
 
   cron_builder:
     title: "Cron Builder - Cron Humanize"
