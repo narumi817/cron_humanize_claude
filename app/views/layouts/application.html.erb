@@ -57,9 +57,9 @@
       <%= link_to t("layouts.application.privacy"), locale_path(:privacy), class: "footer-link" %>
       <span class="footer-sep">|</span>
       <% if I18n.locale == :en %>
-        <%= link_to "日本語", root_path, class: "footer-link lang-link" %>
+        <%= link_to "日本語", lang_switch_path, class: "footer-link lang-link" %>
       <% else %>
-        <%= link_to "English", en_root_path, class: "footer-link lang-link" %>
+        <%= link_to "English", lang_switch_path, class: "footer-link lang-link" %>
       <% end %>
       <span class="footer-sep">|</span>
       <span class="footer-copy">&copy; 2026 mizk.net</span>
