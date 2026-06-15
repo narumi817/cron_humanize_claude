@@ -16,6 +16,18 @@
                           target: "_blank", rel: "noopener noreferrer")).html_safe %>
     </p>
 
+    <h2><%= t("pages.privacy.bmc.heading") %></h2>
+    <p><%= t("pages.privacy.bmc.body") %></p>
+    <p>
+      <%= t("pages.privacy.bmc.policy_text",
+            bmc_link: link_to(t("pages.privacy.bmc.bmc_link"),
+                              "https://www.buymeacoffee.com/privacy-policy",
+                              target: "_blank", rel: "noopener noreferrer"),
+            stripe_link: link_to(t("pages.privacy.bmc.stripe_link"),
+                                 "https://stripe.com/privacy",
+                                 target: "_blank", rel: "noopener noreferrer")).html_safe %>
+    </p>
+
     <h2><%= t("pages.privacy.data.heading") %></h2>
     <p><%= t("pages.privacy.data.body") %></p>
 
