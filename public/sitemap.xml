@@ -6,7 +6,37 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://cron-humanize.mizk.net/en</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://cron-humanize.mizk.net/build</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cron-humanize.mizk.net/en/build</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cron-humanize.mizk.net/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://cron-humanize.mizk.net/en/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://cron-humanize.mizk.net/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://cron-humanize.mizk.net/en/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
