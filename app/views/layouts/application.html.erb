@@ -2,7 +2,9 @@
 <html lang="<%= I18n.locale %>">
   <head>
     <title><%= content_for(:title) || "Cron Humanize" %></title>
-    <meta name="description" content="<%= t("cron_expressions.index.subtitle") %>">
+    <% _page_title = content_for(:title).presence || t("cron_expressions.index.title") %>
+    <% _page_description = content_for(:description).presence || t("cron_expressions.index.subtitle") %>
+    <meta name="description" content="<%= _page_description %>">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Cron Humanize">
@@ -10,14 +12,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <meta property="og:title" content="<%= t("cron_expressions.index.title") %>">
-    <meta property="og:description" content="<%= t("cron_expressions.index.subtitle") %>">
+    <meta property="og:title" content="<%= _page_title %>">
+    <meta property="og:description" content="<%= _page_description %>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.url %>">
     <meta property="og:image" content="<%= root_url.chomp('/') %>/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<%= t("cron_expressions.index.title") %>">
-    <meta name="twitter:description" content="<%= t("cron_expressions.index.subtitle") %>">
+    <meta name="twitter:title" content="<%= _page_title %>">
+    <meta name="twitter:description" content="<%= _page_description %>">
     <meta name="twitter:image" content="<%= root_url.chomp('/') %>/ogp.png">
     <link rel="alternate" hreflang="ja" href="<%= root_url %>">
     <link rel="alternate" hreflang="en" href="<%= en_root_url %>">
