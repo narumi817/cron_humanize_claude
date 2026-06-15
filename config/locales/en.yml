@@ -52,13 +52,19 @@ en:
         body: "This Service uses Google Analytics (GA4) to understand usage. Google Analytics uses cookies to collect access information but does not collect personally identifiable information."
         optout_text: "To disable Google Analytics data collection, please use the %{link}."
         optout_link: "Google Analytics Opt-out Add-on"
+      bmc:
+        heading: "Buy Me a Coffee"
+        body: "The Service uses Buy Me a Coffee to accept support. Information provided during a transaction (such as name, email address, and payment details) is processed by Buy Me a Coffee and its payment processor, Stripe. The Service operator does not access or store any payment card information."
+        policy_text: "Please refer to the %{bmc_link} and %{stripe_link} for details."
+        bmc_link: "Buy Me a Coffee Privacy Policy"
+        stripe_link: "Stripe Privacy Policy"
       data:
         heading: "Information Collected"
         body: "Cron expressions entered by users are sent to the server for conversion, but the input is never stored or logged."
       contact:
         heading: "Contact"
         body: "For inquiries about this Privacy Policy, please contact %{link} on X (formerly Twitter)."
-      updated_at: "Last updated: May 21, 2026"
+      updated_at: "Last updated: June 15, 2026"
     terms:
       title: "Terms of Service - Cron Humanize"
       back: "← Back to top"

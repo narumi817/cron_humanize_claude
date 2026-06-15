@@ -61,13 +61,19 @@ ja:
         body: "当サービスでは、利用状況の把握を目的として Google アナリティクス（GA4）を使用しています。Google アナリティクスはCookieを使用してアクセス情報を収集しますが、個人を特定する情報は収集しません。"
         optout_text: "Google アナリティクスのデータ収集を無効にするには、%{link}をご利用ください。"
         optout_link: "Google アナリティクス オプトアウト アドオン"
+      bmc:
+        heading: "Buy Me a Coffee について"
+        body: "当サービスでは、支援の受付に Buy Me a Coffee を使用しています。支援時に入力された情報（氏名・メールアドレス・決済情報等）は Buy Me a Coffee および決済処理業者である Stripe によって処理されます。当サービス運営者がカード番号等の決済情報を取得・保存することはありません。"
+        policy_text: "詳細は %{bmc_link} および %{stripe_link} をご確認ください。"
+        bmc_link: "Buy Me a Coffee プライバシーポリシー"
+        stripe_link: "Stripe プライバシーポリシー"
       data:
         heading: "収集する情報"
         body: "当サービスでは、ユーザーが入力したcron式をサーバーに送信して変換処理を行いますが、入力内容を保存・記録することはありません。"
       contact:
         heading: "お問い合わせ"
         body: "プライバシーポリシーに関するお問い合わせは、X（旧Twitter）の %{link} までご連絡ください。"
-      updated_at: "最終更新日：2026年5月21日"
+      updated_at: "最終更新日：2026年6月15日"
     terms:
       title: "利用規約 - Cron Humanize"
       back: "← TOPに戻る"
