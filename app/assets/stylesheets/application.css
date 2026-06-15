@@ -175,11 +175,48 @@ h1 {
   white-space: nowrap;
 }
 
+.result-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+  margin-bottom: 0.25rem;
+}
+
+.cron-output {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
 .description h2 {
   font-family: monospace;
   font-size: 1.25rem;
   color: #555;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
+}
+
+.copy-btn {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  color: #555;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  border-color: #4a90d9;
+  color: #4a90d9;
+}
+
+.copy-btn:disabled {
+  border-color: #4caf50;
+  color: #4caf50;
+  cursor: default;
 }
 
 .human-text {
@@ -339,6 +376,7 @@ h1 {
 
 .builder-detail {
   margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   padding: 1rem;
   background: white;
   border: 1px solid #e0e0e0;
@@ -406,4 +444,32 @@ h1 {
 
 .weekday-option input[type="checkbox"] {
   display: none;
+}
+
+.builder-secondary {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.builder-secondary-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #bbb;
+  margin-bottom: 0.75rem;
+}
+
+.form-select {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #4a90d9;
 }

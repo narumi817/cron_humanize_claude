@@ -43,4 +43,15 @@ class CronBuilderControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", "0 9 1 4 *"
     assert_select ".next-times li", count: 5
   end
+
+  test "タイムゾーンを指定してスケジュールを表示" do
+    get build_path, params: { frequency: "every_day", hour: 9, minute: 0, timezone: "UTC" }
+    assert_response :success
+    assert_select ".next-times li", count: 5
+  end
+
+  test "英語ルートでビルダーが表示される" do
+    get en_build_path
+    assert_response :success
+  end
 end

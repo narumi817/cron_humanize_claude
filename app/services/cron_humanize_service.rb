@@ -1,8 +1,9 @@
 class CronHumanizeService
   Result = Data.define(:description, :next_times, :error)
 
-  def initialize(expression)
+  def initialize(expression, timezone: nil)
     @expression = expression.to_s.strip
+    @timezone = timezone.presence || Time.zone.name
   end
 
   def call
@@ -115,10 +116,10 @@ class CronHumanizeService
 
   def next_times(cron)
     times = []
-    t = Time.current
+    t = Time.current.in_time_zone(@timezone)
     5.times do
       t = cron.next_time(t)
-      times << t.to_t.in_time_zone
+      times << t.to_t.in_time_zone(@timezone)
       t += 1.second
     end
     times

@@ -1,27 +1,18 @@
-<% content_for :title, "Cron Builder - Cron Humanize" %>
+<% content_for :title, t("cron_builder.title") %>
 
 <div class="container">
-  <%= link_to "← Cron Humanize", root_path, class: "back-link" %>
+  <%= link_to t("cron_builder.back_link"), locale_path(:root), class: "back-link" %>
   <h1>Cron Builder</h1>
-  <p class="subtitle">条件を選んで cron 式を生成します</p>
+  <p class="subtitle"><%= t("cron_builder.subtitle") %></p>
 
-  <%= form_with url: build_path, method: :get, local: true do %>
+  <%= form_with url: locale_path(:build), method: :get, local: true do %>
     <div class="form-group">
-      <label class="builder-label">頻度</label>
+      <label class="builder-label"><%= t("cron_builder.frequency_label") %></label>
       <div class="frequency-options">
-        <% {
-          "every_minute"   => "毎分",
-          "every_n_minutes" => "N分ごと",
-          "every_hour"     => "毎時",
-          "every_n_hours"  => "N時間ごと",
-          "every_day"      => "毎日",
-          "every_week"     => "毎週",
-          "every_month"    => "毎月",
-          "every_year"     => "毎年"
-        }.each do |value, label| %>
+        <% %w[every_minute every_n_minutes every_hour every_n_hours every_day every_week every_month every_year].each do |value| %>
           <label class="frequency-option">
             <%= radio_button_tag :frequency, value, @frequency == value %>
-            <%= label %>
+            <%= t("cron_builder.frequency.#{value}") %>
           </label>
         <% end %>
       </div>
@@ -31,16 +22,16 @@
       <div class="builder-field">
         <%= number_field_tag :interval_minutes, params[:interval_minutes] || 15,
               min: 1, max: 59, class: "form-input-inline" %>
-        <span class="builder-unit">分ごと</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.minute_per") %></span>
       </div>
     </div>
 
     <div class="builder-detail" data-frequency="every_hour">
       <div class="builder-field">
-        <span class="builder-unit">毎時</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.every_hour_prefix") %></span>
         <%= number_field_tag :minute, params[:minute] || 0,
               min: 0, max: 59, class: "form-input-inline" %>
-        <span class="builder-unit">分</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.minute") %></span>
       </div>
     </div>
 
@@ -48,34 +39,34 @@
       <div class="builder-field">
         <%= number_field_tag :interval_hours, params[:interval_hours] || 6,
               min: 1, max: 23, class: "form-input-inline" %>
-        <span class="builder-unit">時間ごとの</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.hour_interval") %></span>
         <%= number_field_tag :minute, params[:minute] || 0,
               min: 0, max: 59, class: "form-input-inline" %>
-        <span class="builder-unit">分</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.minute") %></span>
       </div>
     </div>
 
     <div class="builder-detail" data-frequency="every_day">
       <div class="builder-field">
-        <span class="builder-unit">毎日</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.every_day_prefix") %></span>
         <%= number_field_tag :hour, params[:hour] || 9,
               min: 0, max: 23, class: "form-input-inline" %>
-        <span class="builder-unit">時</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.hour") %></span>
         <%= number_field_tag :minute, params[:minute] || 0,
               min: 0, max: 59, class: "form-input-inline" %>
-        <span class="builder-unit">分</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.minute") %></span>
       </div>
     </div>
 
     <div class="builder-detail" data-frequency="every_week">
       <div class="builder-field">
-        <span class="builder-label-inline">曜日</span>
+        <span class="builder-label-inline"><%= t("cron_builder.unit.weekday") %></span>
         <div class="weekday-checkboxes">
-          <% [["月", 1], ["火", 2], ["水", 3], ["木", 4], ["金", 5], ["土", 6], ["日", 0]].each do |name, value| %>
+          <% [[1], [2], [3], [4], [5], [6], [0]].each do |value| %>
             <label class="weekday-option">
-              <%= check_box_tag "weekdays[]", value,
-                    Array(params[:weekdays]).map(&:to_i).include?(value) %>
-              <%= name %>
+              <%= check_box_tag "weekdays[]", value.first,
+                    Array(params[:weekdays]).map(&:to_i).include?(value.first) %>
+              <%= t("date.abbr_day_names")[value.first] %>
             </label>
           <% end %>
         </div>
@@ -83,64 +74,84 @@
       <div class="builder-field">
         <%= number_field_tag :hour, params[:hour] || 9,
               min: 0, max: 23, class: "form-input-inline" %>
-        <span class="builder-unit">時</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.hour") %></span>
         <%= number_field_tag :minute, params[:minute] || 0,
               min: 0, max: 59, class: "form-input-inline" %>
-        <span class="builder-unit">分</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.minute") %></span>
       </div>
     </div>
 
     <div class="builder-detail" data-frequency="every_month">
       <div class="builder-field">
-        <span class="builder-label-inline">日</span>
+        <span class="builder-label-inline"><%= t("cron_builder.unit.day_of_month") %></span>
         <%= text_field_tag :days, params[:days],
-              class: "form-input-inline", placeholder: "例: 1,15" %>
+              class: "form-input-inline", placeholder: t("cron_builder.placeholder.days") %>
       </div>
       <div class="builder-field">
         <%= number_field_tag :hour, params[:hour] || 9,
               min: 0, max: 23, class: "form-input-inline" %>
-        <span class="builder-unit">時</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.hour") %></span>
         <%= number_field_tag :minute, params[:minute] || 0,
               min: 0, max: 59, class: "form-input-inline" %>
-        <span class="builder-unit">分</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.minute") %></span>
       </div>
     </div>
 
     <div class="builder-detail" data-frequency="every_year">
       <div class="builder-field">
-        <span class="builder-label-inline">月</span>
+        <span class="builder-label-inline"><%= t("cron_builder.unit.month") %></span>
         <%= text_field_tag :months, params[:months],
-              class: "form-input-inline", placeholder: "例: 4,10" %>
+              class: "form-input-inline", placeholder: t("cron_builder.placeholder.months") %>
       </div>
       <div class="builder-field">
-        <span class="builder-label-inline">日</span>
+        <span class="builder-label-inline"><%= t("cron_builder.unit.day_of_month") %></span>
         <%= number_field_tag :day, params[:day] || 1,
               min: 1, max: 31, class: "form-input-inline" %>
       </div>
       <div class="builder-field">
         <%= number_field_tag :hour, params[:hour] || 9,
               min: 0, max: 23, class: "form-input-inline" %>
-        <span class="builder-unit">時</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.hour") %></span>
         <%= number_field_tag :minute, params[:minute] || 0,
               min: 0, max: 59, class: "form-input-inline" %>
-        <span class="builder-unit">分</span>
+        <span class="builder-unit"><%= t("cron_builder.unit.minute") %></span>
       </div>
     </div>
 
     <div class="form-group">
-      <%= submit_tag "生成する", class: "btn" %>
+      <%= submit_tag t("cron_builder.submit"), class: "btn" %>
+    </div>
+
+    <div class="builder-secondary">
+      <p class="builder-secondary-label"><%= t("cron_builder.schedule_settings") %></p>
+      <div class="form-group">
+        <label class="builder-label"><%= t("cron_builder.timezone_label") %></label>
+        <%= select_tag :timezone,
+              options_for_select(CronBuilderController::MAJOR_TIMEZONES.map { |tz|
+                [ActiveSupport::TimeZone[tz]&.to_s || tz, tz]
+              }, params[:timezone] || "Tokyo"),
+              class: "form-select" %>
+      </div>
     </div>
   <% end %>
 
   <% if @cron_expression %>
     <div class="result">
       <div class="description">
-        <h2><%= @cron_expression %></h2>
+        <p class="result-label"><%= t("cron_builder.result_label") %></p>
+        <div class="cron-output">
+          <h2 class="cron-expression"><%= @cron_expression %></h2>
+          <button type="button" class="copy-btn"
+                  data-copy="<%= @cron_expression %>"
+                  data-done="<%= t("cron_builder.copy_done") %>">
+            <%= t("cron_builder.copy_button") %>
+          </button>
+        </div>
       </div>
 
       <% if @next_times&.any? %>
         <div class="next-times">
-          <h3>今後5回のスケジュール</h3>
+          <h3><%= t("cron_builder.next_times") %></h3>
           <ul>
             <% @next_times.each do |time| %>
               <li><%= l(time, format: :long) %></li>
@@ -164,7 +175,28 @@
         s.querySelectorAll('input').forEach(function (i) { i.disabled = !active; });
       });
     }
-    radios.forEach(function (r) { r.addEventListener('change', update); });
+    var result = document.querySelector('.result');
+    radios.forEach(function (r) {
+      r.addEventListener('change', function () {
+        update();
+        if (result) result.hidden = true;
+      });
+    });
     update();
+
+    var copyBtn = document.querySelector('.copy-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(copyBtn.dataset.copy).then(function () {
+          var original = copyBtn.textContent;
+          copyBtn.textContent = copyBtn.dataset.done;
+          copyBtn.disabled = true;
+          setTimeout(function () {
+            copyBtn.textContent = original;
+            copyBtn.disabled = false;
+          }, 2000);
+        });
+      });
+    }
   }());
 </script>

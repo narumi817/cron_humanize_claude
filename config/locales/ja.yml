@@ -68,6 +68,41 @@ ja:
         body: "プライバシーポリシーに関するお問い合わせは、X（旧Twitter）の %{link} までご連絡ください。"
       updated_at: "最終更新日：2026年5月21日"
 
+  cron_builder:
+    title: "Cron Builder - Cron Humanize"
+    subtitle: "条件を選んで cron 式を生成します"
+    back_link: "← Cron Humanize"
+    frequency_label: "頻度"
+    timezone_label: "タイムゾーン"
+    schedule_settings: "スケジュール表示設定"
+    submit: "生成する"
+    result_label: "生成された cron 式"
+    copy_button: "コピー"
+    copy_done: "コピーしました"
+    next_times: "今後5回のスケジュール"
+    frequency:
+      every_minute: "毎分"
+      every_n_minutes: "分ごと"
+      every_hour: "毎時"
+      every_n_hours: "時間ごと"
+      every_day: "毎日"
+      every_week: "毎週"
+      every_month: "毎月"
+      every_year: "毎年"
+    unit:
+      minute_per: "分ごと"
+      every_hour_prefix: "毎時"
+      minute: "分"
+      hour_interval: "時間ごとの"
+      every_day_prefix: "毎日"
+      hour: "時"
+      weekday: "曜日"
+      day_of_month: "日"
+      month: "月"
+    placeholder:
+      days: "例: 1,15"
+      months: "例: 4,10"
+
   cron_humanize:
     every_minute: "毎分"
     every_n_minutes: "%{n}分ごと"
