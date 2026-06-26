@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "robots.txt" => "pages#robots", as: :robots
+  get "family-stock/privacy" => "pages#family_stock_privacy"
 
   root "cron_expressions#index"
   get "privacy" => "pages#privacy"

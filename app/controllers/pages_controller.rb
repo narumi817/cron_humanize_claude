@@ -4,6 +4,10 @@ class PagesController < ApplicationController
     render "robots", formats: [ :text ], layout: false
   end
 
+  def family_stock_privacy
+    render layout: false
+  end
+
   def privacy
   end
 
