@@ -1,0 +1,42 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [ opened, ready_for_review ]
+
+jobs:
+  review:
+    # 公開リポジトリのため、リポジトリオーナー以外の PR では起動しない
+    if: >-
+      github.actor == github.repository_owner &&
+      github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Review pull request
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          use_sticky_comment: true
+          prompt: |
+            この PR の差分をレビューしてください。
+            プロジェクトの規約は CLAUDE.md に従います。特に以下を重視してください。
+
+            - MVP として過剰設計になっていないか
+            - controller が薄く保たれ、ビジネスロジックが service object にあるか
+            - Rails の慣習に沿っているか
+            - 実装した機能にテストが追加・更新されているか
+            - 可読性と保守性
+
+            指摘は重要度の高いものだけに絞り、日本語で簡潔に書いてください。
+            問題がなければ、その旨を短く伝えてください。
