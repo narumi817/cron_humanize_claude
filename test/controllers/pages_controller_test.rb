@@ -15,4 +15,13 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get privacy_path
     assert_select "body", /Google アナリティクス/
   end
+
+  test "英語ルートのリクエスト後もロケールが漏れない" do
+    get en_privacy_path
+    assert_select "title", /Privacy Policy/
+    assert_equal I18n.default_locale, I18n.locale
+
+    get privacy_path
+    assert_select "title", /プライバシーポリシー/
+  end
 end
