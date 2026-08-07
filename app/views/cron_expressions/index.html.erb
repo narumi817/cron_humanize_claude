@@ -53,6 +53,7 @@
 
   <% if @result %>
     <% if @result.error %>
+      <% content_for :analytics_event do %>gtag('event', 'convert_error');<% end %>
       <div class="result error">
         <p class="error-message"><%= t("cron_expressions.index.error.invalid") %></p>
         <p class="error-hint">
@@ -62,6 +63,7 @@
         </p>
       </div>
     <% else %>
+      <% content_for :analytics_event do %>gtag('event', 'convert');<% end %>
       <div class="result">
         <div class="description">
           <h2><%= @cron_expression %></h2>
