@@ -1,6 +1,15 @@
 require "test_helper"
 
 class CronBuilderControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @original_ga_id = ENV["GOOGLE_ANALYTICS_ID"]
+    ENV["GOOGLE_ANALYTICS_ID"] = "G-TEST"
+  end
+
+  teardown do
+    ENV["GOOGLE_ANALYTICS_ID"] = @original_ga_id
+  end
+
   test "GET /build returns 200" do
     get build_path
     assert_response :success
@@ -48,6 +57,16 @@ class CronBuilderControllerTest < ActionDispatch::IntegrationTest
     get build_path, params: { frequency: "every_day", hour: 9, minute: 0, timezone: "UTC" }
     assert_response :success
     assert_select ".next-times li", count: 5
+  end
+
+  test "生成成功時にbuildイベントを送信" do
+    get build_path, params: { frequency: "every_day", hour: 9, minute: 0 }
+    assert_match "gtag('event', 'build');", response.body
+  end
+
+  test "frequency未指定時はイベントを送信しない" do
+    get build_path
+    assert_no_match "gtag('event',", response.body
   end
 
   test "英語ルートでビルダーが表示される" do

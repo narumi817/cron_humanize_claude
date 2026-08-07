@@ -137,6 +137,7 @@
   <% end %>
 
   <% if @cron_expression %>
+    <% content_for :analytics_event do %>gtag('event', 'build');<% end %>
     <div class="result">
       <div class="description">
         <p class="result-label"><%= t("cron_builder.result_label") %></p>
