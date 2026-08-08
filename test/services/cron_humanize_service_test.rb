@@ -177,37 +177,34 @@ class CronHumanizeServiceTest < ActiveSupport::TestCase
 
   # English locale tests
   class EnglishLocaleTest < ActiveSupport::TestCase
-    setup { I18n.locale = :en }
-    teardown { I18n.locale = I18n.default_locale }
+    # I18n.locale をグローバルに書き換えると並列実行時に他のテストへ漏れるため、
+    # with_locale でテストごとにスコープを閉じる
+    def humanize(expression)
+      I18n.with_locale(:en) { CronHumanizeService.new(expression).call }
+    end
 
     test "every minute in English" do
-      result = CronHumanizeService.new("* * * * *").call
-      assert_equal "Every minute", result.description
+      assert_equal "Every minute", humanize("* * * * *").description
     end
 
     test "every N minutes in English" do
-      result = CronHumanizeService.new("*/5 * * * *").call
-      assert_equal "Every 5 minutes", result.description
+      assert_equal "Every 5 minutes", humanize("*/5 * * * *").description
     end
 
     test "daily at specific time in English" do
-      result = CronHumanizeService.new("0 9 * * *").call
-      assert_equal "Every day 9:00", result.description
+      assert_equal "Every day 9:00", humanize("0 9 * * *").description
     end
 
     test "weekdays in English" do
-      result = CronHumanizeService.new("0 9 * * 1-5").call
-      assert_equal "Every Mon–Fri 9:00", result.description
+      assert_equal "Every Mon–Fri 9:00", humanize("0 9 * * 1-5").description
     end
 
     test "monthly first day in English" do
-      result = CronHumanizeService.new("0 0 1 * *").call
-      assert_equal "Every month on day 1 0:00", result.description
+      assert_equal "Every month on day 1 0:00", humanize("0 0 1 * *").description
     end
 
     test "invalid cron expression in English" do
-      result = CronHumanizeService.new("invalid").call
-      assert_equal "Invalid cron expression", result.error
+      assert_equal "Invalid cron expression", humanize("invalid").error
     end
   end
 end
