@@ -53,6 +53,7 @@ ja:
   pages:
     privacy:
       title: "プライバシーポリシー - Cron Humanize"
+      description: "Cron Humanize のプライバシーポリシー。アクセス解析の利用、収集する情報の範囲、入力されたcron式を保存しないことについて説明しています。"
       back: "← TOPに戻る"
       heading: "プライバシーポリシー"
       intro: "本サービス「Cron Humanize」（以下「当サービス」）における個人情報の取り扱いについて説明します。"
@@ -76,6 +77,7 @@ ja:
       updated_at: "最終更新日：2026年6月15日"
     terms:
       title: "利用規約 - Cron Humanize"
+      description: "Cron Humanize の利用規約。サービス概要、免責事項、禁止事項、準拠法など、ご利用にあたっての条件を定めています。"
       back: "← TOPに戻る"
       heading: "利用規約"
       intro: "本規約は、本サービス「Cron Humanize」（以下「当サービス」）の利用条件を定めるものです。ご利用の前にお読みください。"

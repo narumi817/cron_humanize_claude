@@ -44,6 +44,7 @@ en:
   pages:
     privacy:
       title: "Privacy Policy - Cron Humanize"
+      description: "Privacy Policy for Cron Humanize. Explains the use of analytics, what information is collected, and why entered cron expressions are never stored."
       back: "← Back to top"
       heading: "Privacy Policy"
       intro: "This page describes how \"Cron Humanize\" (the \"Service\") handles personal information."
@@ -67,6 +68,7 @@ en:
       updated_at: "Last updated: June 15, 2026"
     terms:
       title: "Terms of Service - Cron Humanize"
+      description: "Terms of Service for Cron Humanize. Covers the service overview, disclaimer, prohibited conduct, and governing law."
       back: "← Back to top"
       heading: "Terms of Service"
       intro: "These Terms govern your use of \"Cron Humanize\" (the \"Service\"). Please read them before using the Service."
